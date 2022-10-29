@@ -1,7 +1,7 @@
 package com.veloginmobile.server.service.impl;
 
-import com.veloginmobile.server.data.dto.TestDataDto;
-import com.veloginmobile.server.data.dto.TestDataResponseDto;
+import com.veloginmobile.server.data.dto.test.TestDataDto;
+import com.veloginmobile.server.data.dto.test.TestDataResponseDto;
 import com.veloginmobile.server.data.entity.TestData;
 import com.veloginmobile.server.data.repository.TestDataRepository;
 import com.veloginmobile.server.service.TestDataService;

@@ -1,8 +1,8 @@
 package com.veloginmobile.server.controller;
 
-import com.veloginmobile.server.data.dto.ChangeTestDataNameDto;
-import com.veloginmobile.server.data.dto.TestDataDto;
-import com.veloginmobile.server.data.dto.TestDataResponseDto;
+import com.veloginmobile.server.data.dto.test.ChangeTestDataNameDto;
+import com.veloginmobile.server.data.dto.test.TestDataDto;
+import com.veloginmobile.server.data.dto.test.TestDataResponseDto;
 import com.veloginmobile.server.service.TestDataService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

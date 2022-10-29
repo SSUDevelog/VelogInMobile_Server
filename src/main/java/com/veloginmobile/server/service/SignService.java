@@ -1,12 +1,14 @@
 package com.veloginmobile.server.service;
 
-import com.veloginmobile.server.data.dto.SignInResultDto;
-import com.veloginmobile.server.data.dto.SignUpResultDto;
+import com.veloginmobile.server.data.dto.sign.SignInDto;
+import com.veloginmobile.server.data.dto.sign.SignInResultDto;
+import com.veloginmobile.server.data.dto.sign.SignUpDto;
+import com.veloginmobile.server.data.dto.sign.SignUpResultDto;
 
 public interface SignService {
 
-    SignUpResultDto signUp(String id, String password, String name, String role);
+    SignUpResultDto signUp(SignUpDto signUpDto);
 
-    SignInResultDto signIn(String id, String password) throws RuntimeException;
+    SignInResultDto signIn(SignInDto signInDto) throws RuntimeException;
 
 }
