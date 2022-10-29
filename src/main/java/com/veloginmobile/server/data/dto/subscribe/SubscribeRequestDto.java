@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SubscribeRequestModel {
+public class SubscribeRequestDto {
     private Boolean validate;
     private String userName;
     private String profilePictureURL;
