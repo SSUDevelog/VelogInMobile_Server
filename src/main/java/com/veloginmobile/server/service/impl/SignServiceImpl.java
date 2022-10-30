@@ -26,7 +26,6 @@ public class SignServiceImpl implements SignService {
     private JwtTokenProvider jwtTokenProvider;
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
     public SignServiceImpl(UserRepository userRepository, JwtTokenProvider jwtTokenProvider, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.jwtTokenProvider = jwtTokenProvider;
@@ -75,7 +74,7 @@ public class SignServiceImpl implements SignService {
         LOGGER.info("[getSignInResult] Id : {}", signInDto.getId());
 
         LOGGER.info("[getSignInResult] 패스워드 비교 수행");
-        if(!passwordEncoder.matches(signInDto.getPassword(), user.getPassword())) {
+        if(!passwordEncoder.matches(signInDto.getPassword(), user.getPassword())) {//각 익셉션에 대한 클래스 정리, 분류 필요
             throw new RuntimeException();
         }
         LOGGER.info("[getSignInResult] 패스워드 일치");

@@ -36,8 +36,8 @@ public class SubscribeServiceImpl implements SubscribeService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(SignServiceImpl.class);
 
-    public SubscriberPostResultDto getSubscribersPost(String uid) throws IOException {
-        User user = userRepository.getByUid(uid);
+    public SubscriberPostResultDto getSubscribersPost(String uid) throws IOException {//밖에서 유저 객체를 받아야함.
+        User user = userRepository.getByUid(uid);//밖으로 빼야함.
         Subscribe subscribe = subscribeRepository.findByUser(user);
         List<String> subscribers = subscribe.getSubscribers();
 

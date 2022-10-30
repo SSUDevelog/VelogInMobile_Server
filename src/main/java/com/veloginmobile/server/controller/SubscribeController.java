@@ -27,10 +27,9 @@ public class SubscribeController {
 
     private final JwtTokenProvider jwtTokenProvider;
     private final SubscribeService subscribeService;
-    private final SubscribeRequestDto subscribeRequestDto;
+    private final SubscribeRequestDto subscribeRequestDto;//별도 서비스를 만들어야함.
     private final Logger LOGGER = LoggerFactory.getLogger(SignController.class);
 
-    @Autowired
     public SubscribeController(JwtTokenProvider jwtTokenProvider, SubscribeService subscribeService){
         this.jwtTokenProvider = jwtTokenProvider;
         this.subscribeService = subscribeService;
@@ -46,7 +45,7 @@ public class SubscribeController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 발급 받은 access_token", required = true, dataType = "String", paramType = "header")})
     @GetMapping(value = "/getsubscriber")
-    public ResponseEntity<List<String>> getSubscriber(@RequestHeader("X-AUTH-TOKEN") String token) {
+    public ResponseEntity<List<String>> getSubscriber(@RequestHeader("X-AUTH-TOKEN") String token) {//제네릭 안의 제네릭 -> 별도응답 객체를 만들어야함!
         String userName = jwtTokenProvider.getUsername(token);
 
         List<String> subscribers = subscribeService.getSubscribers(userName);
@@ -67,7 +66,7 @@ public class SubscribeController {
 
     @ApiImplicitParams({
             @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 발급 받은 access_token", required = true, dataType = "String", paramType = "header")})
-    @GetMapping(value = "/subscriberpost")
+    @GetMapping(value = "/subscriberpost")//responseentity가 없어도 되는지 테스트 되는지 확인해보기//403 402같은 코드를 던질경우 쓰기
     public ResponseEntity<SubscriberPostResultDto> getSubscriberPost(@RequestHeader("X-AUTH-TOKEN") String token) throws IOException {
         String userName = jwtTokenProvider.getUsername(token);
 
@@ -81,7 +80,7 @@ public class SubscribeController {
             @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 발급 받은 access_token", required = true, dataType = "String", paramType = "header")})
     @GetMapping("/inputname/{name}")
     @ResponseBody
-    public Object subscribeInput(@PathVariable String name) {
+    public Object subscribeInput(@PathVariable String name) {//별도서비스에서 익셉션을 비즈니스 로직에서 처리해야함. 서비스가 알아서 처리해야함. 글로벌 익셉션에서 커스텀 익셉션?
 
         String userProfileURL = "https://velog.io/@" + name;
         int responseCode = 0;
