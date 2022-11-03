@@ -124,15 +124,14 @@ public class SubscribeServiceImpl implements SubscribeService {
             return subscribeRequestDto;
         }
         subscribeRequestDto.setValidate(Boolean.TRUE);
-        subscribeRequestDto = getVelogUserProfilePicture(subscribeRequestDto);
+        getVelogUserProfilePicture(subscribeRequestDto);
         return subscribeRequestDto;
     }
 
-    private SubscribeRequestDto getVelogUserProfilePicture(SubscribeRequestDto subscribeRequestDto) throws IOException {
+    private void getVelogUserProfilePicture(SubscribeRequestDto subscribeRequestDto) throws IOException {
         Document document = Jsoup.connect(subscribeRequestDto.getProfileURL()).get();
         Elements profileImageURL = document.select("#root > div.sc-efQSVx.sc-cTAqQK.hKuDqm > div.sc-hiwPVj.cFguvd.sc-dkqQuH > div.sc-jlRLRk.itanDZ.sc-dwsnSq.cXXBgc > div.sc-dUbtfd.gBxoyd > a > img");
         subscribeRequestDto.setProfilePictureURL(profileImageURL.attr("src"));
-        return subscribeRequestDto;
     }
 
 

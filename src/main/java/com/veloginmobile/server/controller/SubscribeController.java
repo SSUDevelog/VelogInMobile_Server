@@ -70,10 +70,12 @@ public class SubscribeController {
             @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 발급 받은 access_token", required = true, dataType = "String", paramType = "header")})
     @GetMapping("/inputname/{name}")
     @ResponseBody
-    public SubscribeRequestDto subscribeInput(@PathVariable String name) throws IOException {
+    public ResponseEntity<SubscribeRequestDto> subscribeInput(@PathVariable String name) throws IOException {
         SubscribeRequestDto subscribeRequestDto = new SubscribeRequestDto(name);
         Boolean isPresent = subscribeService.isValidateUser(subscribeRequestDto, name);
-        return subscribeService.getVelogUserProfile(isPresent, subscribeRequestDto);
+        subscribeService.getVelogUserProfile(isPresent, subscribeRequestDto);
+
+        return ResponseEntity.status(HttpStatus.OK).body(subscribeRequestDto);
     }
 
     @ExceptionHandler(value = IOException.class)
