@@ -6,20 +6,18 @@ import com.veloginmobile.server.data.dto.subscribe.SubscriberPostResultDto;
 import com.veloginmobile.server.service.SubscribeService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
-import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.jsoup.Jsoup;
+import org.slf4j.Logger;
+
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("subscribe")
@@ -27,19 +25,11 @@ public class SubscribeController {
 
     private final JwtTokenProvider jwtTokenProvider;
     private final SubscribeService subscribeService;
-    private final SubscribeRequestDto subscribeRequestDto;//별도 서비스를 만들어야함.
     private final Logger LOGGER = LoggerFactory.getLogger(SignController.class);
 
     public SubscribeController(JwtTokenProvider jwtTokenProvider, SubscribeService subscribeService){
         this.jwtTokenProvider = jwtTokenProvider;
         this.subscribeService = subscribeService;
-        this.subscribeRequestDto = new SubscribeRequestDto();
-    }
-
-    private int openURL(String profileURL) throws IOException {
-        HttpURLConnection connection = (HttpURLConnection) new URL(profileURL).openConnection();
-        connection.setRequestMethod("HEAD");
-        return connection.getResponseCode();
     }
 
     @ApiImplicitParams({
@@ -80,31 +70,24 @@ public class SubscribeController {
             @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 발급 받은 access_token", required = true, dataType = "String", paramType = "header")})
     @GetMapping("/inputname/{name}")
     @ResponseBody
-    public Object subscribeInput(@PathVariable String name) {//별도서비스에서 익셉션을 비즈니스 로직에서 처리해야함. 서비스가 알아서 처리해야함. 글로벌 익셉션에서 커스텀 익셉션?
+    public SubscribeRequestDto subscribeInput(@PathVariable String name) throws IOException {
+        SubscribeRequestDto subscribeRequestDto = new SubscribeRequestDto(name);
+        Boolean isPresent = subscribeService.isValidateUser(subscribeRequestDto, name);
+        return subscribeService.getVelogUserProfile(isPresent, subscribeRequestDto);
+    }
 
-        String userProfileURL = "https://velog.io/@" + name;
-        int responseCode = 0;
-        Document document = null;
+    @ExceptionHandler(value = IOException.class)
+    public ResponseEntity<Map<String, String>> ExceptionHandler (IOException e) {
+        HttpHeaders responseHeaders = new HttpHeaders();
+        HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 
-        try {
-            document = Jsoup.connect(userProfileURL).get();
-            responseCode = openURL(userProfileURL);
-        }
-        catch (IOException e) {
-            LOGGER.error("에러가 발생했습니다. 다시 시도하세요.");
-        }
+        LOGGER.error("ExceptionHandler 호출, {}, {}", e.getCause(), e.getMessage());
 
-        if (responseCode == 404) {
-            subscribeRequestDto.setValidate(Boolean.FALSE);
-            subscribeRequestDto.setUserName("");
-            return subscribeRequestDto;
-        }
+        Map<String,String> map = new HashMap<>();
+        map.put("error type", httpStatus.getReasonPhrase());
+        map.put("code", "500");
+        map.put("messge", "에러 발생");
 
-        subscribeRequestDto.setUserName(name);
-        subscribeRequestDto.setValidate(Boolean.TRUE);
-
-        Elements profileImageURL = document.select("#root > div.sc-efQSVx.sc-cTAqQK.hKuDqm > div.sc-hiwPVj.cFguvd.sc-dkqQuH > div.sc-jlRLRk.itanDZ.sc-dwsnSq.cXXBgc > div.sc-dUbtfd.gBxoyd > a > img");
-        subscribeRequestDto.setProfilePictureURL(profileImageURL.attr("src"));
-        return subscribeRequestDto;
+        return new ResponseEntity<>(map, responseHeaders, httpStatus);
     }
 }

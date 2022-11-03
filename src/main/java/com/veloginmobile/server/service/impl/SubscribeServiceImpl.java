@@ -1,6 +1,7 @@
 package com.veloginmobile.server.service.impl;
 
 import com.veloginmobile.server.data.dto.subscribe.SubscribePostDto;
+import com.veloginmobile.server.data.dto.subscribe.SubscribeRequestDto;
 import com.veloginmobile.server.data.dto.subscribe.SubscriberPostResultDto;
 import com.veloginmobile.server.data.entity.Subscribe;
 import com.veloginmobile.server.data.entity.User;
@@ -11,12 +12,13 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -34,7 +36,6 @@ public class SubscribeServiceImpl implements SubscribeService {
         this.userRepository = userRepository;
     }
 
-    private final Logger LOGGER = LoggerFactory.getLogger(SignServiceImpl.class);
 
     public SubscriberPostResultDto getSubscribersPost(String uid) throws IOException {//밖에서 유저 객체를 받아야함.
         User user = userRepository.getByUid(uid);//밖으로 빼야함.
@@ -109,11 +110,43 @@ public class SubscribeServiceImpl implements SubscribeService {
         return subscribePostDtos;
     }
 
+    public Boolean isValidateUser(SubscribeRequestDto subscribeRequestDto, String velogUsername) throws IOException {
+
+        int responseCode = openURL(subscribeRequestDto.getProfileURL());
+
+        if (responseCode == 404) return Boolean.FALSE;
+        return Boolean.TRUE;
+    }
+
+    public SubscribeRequestDto getVelogUserProfile(Boolean isPresent, SubscribeRequestDto subscribeRequestDto) throws IOException {
+        if (isPresent == Boolean.FALSE) {
+            subscribeRequestDto.setValidate(Boolean.FALSE);
+            return subscribeRequestDto;
+        }
+        subscribeRequestDto.setValidate(Boolean.TRUE);
+        subscribeRequestDto = getVelogUserProfilePicture(subscribeRequestDto);
+        return subscribeRequestDto;
+    }
+
+    private SubscribeRequestDto getVelogUserProfilePicture(SubscribeRequestDto subscribeRequestDto) throws IOException {
+        Document document = Jsoup.connect(subscribeRequestDto.getProfileURL()).get();
+        Elements profileImageURL = document.select("#root > div.sc-efQSVx.sc-cTAqQK.hKuDqm > div.sc-hiwPVj.cFguvd.sc-dkqQuH > div.sc-jlRLRk.itanDZ.sc-dwsnSq.cXXBgc > div.sc-dUbtfd.gBxoyd > a > img");
+        subscribeRequestDto.setProfilePictureURL(profileImageURL.attr("src"));
+        return subscribeRequestDto;
+    }
+
+
     private Subscribe makeSubscribe(User user){
 
         Subscribe subscribe = new Subscribe();
 
         subscribe.setUser(user);
         return subscribeRepository.save(subscribe);
+    }
+
+    private int openURL(String profileURL) throws IOException {
+        HttpURLConnection connection = (HttpURLConnection) new URL(profileURL).openConnection();
+        connection.setRequestMethod("HEAD");
+        return connection.getResponseCode();
     }
 }

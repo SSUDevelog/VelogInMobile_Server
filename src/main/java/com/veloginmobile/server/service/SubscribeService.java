@@ -1,6 +1,7 @@
 package com.veloginmobile.server.service;
 
 import com.veloginmobile.server.data.dto.subscribe.SubscribePostDto;
+import com.veloginmobile.server.data.dto.subscribe.SubscribeRequestDto;
 import com.veloginmobile.server.data.dto.subscribe.SubscriberPostResultDto;
 import com.veloginmobile.server.data.entity.Subscribe;
 
@@ -18,4 +19,8 @@ public interface SubscribeService {
     void addSubscribe(String uid, String subscriber);
 
     List<String> getSubscribers(String userName);
+
+    Boolean isValidateUser(SubscribeRequestDto subscribeRequestDto, String velogUsername) throws IOException;
+
+    SubscribeRequestDto getVelogUserProfile(Boolean isPresent, SubscribeRequestDto subscribeRequestDto) throws IOException;
 }

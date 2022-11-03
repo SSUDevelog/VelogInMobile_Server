@@ -4,7 +4,6 @@ import com.veloginmobile.server.data.dto.sign.SignInDto;
 import com.veloginmobile.server.data.dto.sign.SignInResultDto;
 import com.veloginmobile.server.data.dto.sign.SignUpDto;
 import com.veloginmobile.server.data.dto.sign.SignUpResultDto;
-import com.veloginmobile.server.data.entity.Subscribe;
 import com.veloginmobile.server.service.SignService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
