@@ -45,11 +45,11 @@ public class SubscribeServiceImpl implements SubscribeService {
         return getSubscribersPost(subscribers);
     }
 
-    public SubscriberPostResultDto getSubscribersPost(List<String> subscribers) throws IOException  {
+    public SubscriberPostResultDto getSubscribersPost(List<String> subscribers) throws IOException {
 
         SubscriberPostResultDto subscriberPostResultDto = new SubscriberPostResultDto();
 
-        for(String sub : subscribers){
+        for (String sub : subscribers) {
             List<SubscribePostDto> subscribePostDtos = getSubscriberPosts(sub);
             subscriberPostResultDto.getSubscribePostDtoList().addAll(subscribePostDtos);
         }
@@ -59,11 +59,14 @@ public class SubscribeServiceImpl implements SubscribeService {
     }
 
     //반환형 나중에 성공여부 DTO로 바꾸기//나중에 실제 존재 여부 체크하기
-    public void addSubscribe(String uid, String subscriber){
+    //inputname에서 True가 떴을 때만 이 메소드가 호출되므로 실제 존재여부를 또 체크 할 필요는 없습니다!
+    //따라서 이 메소드는 단순히 구독자를 '추가'하는 기능만 가지면 될 것 같습니다.
+    //이 주석은 확인하시면 지워주세요 :)
+    public void addSubscribe(String uid, String subscriber) {
 
         User user = userRepository.getByUid(uid);
         Subscribe subscribe = subscribeRepository.findByUser(user);
-        if(subscribe == null) {
+        if (subscribe == null) {
             subscribe = makeSubscribe(user);
         }
 
@@ -88,7 +91,7 @@ public class SubscribeServiceImpl implements SubscribeService {
 
         Elements posts = doc.select("#root > div.sc-efQSVx.sc-cTAqQK.hKuDqm > div.sc-hiwPVj.cFguvd.sc-dkqQuH > div > div.sc-gGPzkF.idFviV > div.sc-kmQMED > div.sc-gslxeA.leuZzQ");
 
-        for(Element post: posts) {
+        for (Element post : posts) {
             SubscribePostDto subscribePostDto = new SubscribePostDto();
 
             subscribePostDto.setName(subscriber);
@@ -100,7 +103,7 @@ public class SubscribeServiceImpl implements SubscribeService {
             subscribePostDto.setImg(post.select("a div img").attr("src"));
 
             Elements tags = post.select(".tags-wrapper .sc-TBWPX.fOVlQW");
-            for(Element tag : tags){
+            for (Element tag : tags) {
                 subscribePostDto.getTag().add(tag.text());
             }
 
@@ -135,7 +138,7 @@ public class SubscribeServiceImpl implements SubscribeService {
     }
 
 
-    private Subscribe makeSubscribe(User user){
+    private Subscribe makeSubscribe(User user) {
 
         Subscribe subscribe = new Subscribe();
 

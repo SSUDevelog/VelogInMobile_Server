@@ -27,7 +27,7 @@ public class SubscribeController {
     private final SubscribeService subscribeService;
     private final Logger LOGGER = LoggerFactory.getLogger(SignController.class);
 
-    public SubscribeController(JwtTokenProvider jwtTokenProvider, SubscribeService subscribeService){
+    public SubscribeController(JwtTokenProvider jwtTokenProvider, SubscribeService subscribeService) {
         this.jwtTokenProvider = jwtTokenProvider;
         this.subscribeService = subscribeService;
     }
@@ -79,13 +79,13 @@ public class SubscribeController {
     }
 
     @ExceptionHandler(value = IOException.class)
-    public ResponseEntity<Map<String, String>> ExceptionHandler (IOException e) {
+    public ResponseEntity<Map<String, String>> ExceptionHandler(IOException e) {
         HttpHeaders responseHeaders = new HttpHeaders();
         HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 
         LOGGER.error("ExceptionHandler 호출, {}, {}", e.getCause(), e.getMessage());
 
-        Map<String,String> map = new HashMap<>();
+        Map<String, String> map = new HashMap<>();
         map.put("error type", httpStatus.getReasonPhrase());
         map.put("code", "500");
         map.put("messge", "에러 발생");
