@@ -12,6 +12,8 @@ import javax.validation.constraints.NotBlank;
 @Builder
 public class SignInDto {
 
+
+
     @ApiParam(value = "ID", required = true)
     @NotBlank
     private String id;
@@ -19,4 +21,8 @@ public class SignInDto {
     @ApiParam(value = "Password", required = true)
     @NotBlank
     private String password;
+
+    @ApiParam(value = "FCMToken", required = true)
+    @NotBlank
+    private String fcmToken;
 }

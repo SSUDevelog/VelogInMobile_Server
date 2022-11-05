@@ -4,6 +4,7 @@ import com.veloginmobile.server.data.dto.sign.SignInDto;
 import com.veloginmobile.server.data.dto.sign.SignInResultDto;
 import com.veloginmobile.server.data.dto.sign.SignUpDto;
 import com.veloginmobile.server.data.dto.sign.SignUpResultDto;
+import com.veloginmobile.server.service.NotificationService;
 import com.veloginmobile.server.service.SignService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,20 +24,22 @@ public class SignController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(SignController.class);
     private final SignService signService;
+    private final NotificationService notificationService;
 
-    @Autowired
-    public SignController(SignService signService) {
+    public SignController(SignService signService, NotificationService notificationService) {
         this.signService = signService;
+        this.notificationService = notificationService;
     }
 
     @PostMapping(value = "/sign-in")
     public SignInResultDto signIn(
-            @Validated @RequestBody SignInDto signInDto) throws RuntimeException {
+            @Validated @RequestBody SignInDto signInDto) throws RuntimeException {//signInDto에 토큰도 묶어놔도 되는지 질문!
         LOGGER.info("[signIn] 로그인을 시도하고 있습니다. id : {}, pw : ****", signInDto.getId());
         SignInResultDto signInResultDto = signService.signIn(signInDto);
 
         if(signInResultDto.getCode() == 0) {
             LOGGER.info("[signIn] 정상적으로 로그인 되었습니다. id : {}, token : {}", signInDto.getId(), signInResultDto.getToken());
+            notificationService.joinGroup("AllGroup", signInDto.getFcmToken());//로그아웃할때는 제거하는 기능 추가하기
         }
         return signInResultDto;
     }
