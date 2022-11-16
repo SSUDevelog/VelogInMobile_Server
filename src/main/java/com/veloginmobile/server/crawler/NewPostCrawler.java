@@ -6,12 +6,23 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.PersistenceUnit;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class NewPostCrawler {
 
+    @PersistenceUnit
+    EntityManagerFactory factory;
     EntityManager em;
+
+    public NewPostCrawler() {
+        this.factory = Persistence.createEntityManagerFactory("name");
+        this.em = factory.createEntityManager();
+    }
 
     public void searchNewPost() {
         while (Boolean.TRUE){
@@ -27,12 +38,13 @@ public class NewPostCrawler {
                     String userProfileURL = "https://velog.io/@" + subscriber;
                     Document doc = Jsoup.connect(userProfileURL).get();
 
-                    Elements posts = doc.select("#root > div.sc-efQSVx.kdrjec.sc-cTAqQK.gdjBUK > div.sc-hiwPVj.dezvna.sc-fXEqDS.hmUoNK > div:nth-child(4) > div.sc-evcjhq.dAPqfe > div > div:nth-child(1) > div.subinfo > span:nth-child(1)");
-                    String writeTime = posts.text();
+                    Elements posts = doc.select(".subinfo span");
+                    String writeTime = posts.first().text();
+                    System.out.println(writeTime);
 
-
-                    if (writeTime.equals("1분 전") && writeTime.equals("방금 전")) {
+                    if (writeTime.equals("1분 전") || writeTime.equals("2분 전")) {
                         newPostDto.newPostAuthor.add(subscriber);
+                        System.out.println(newPostDto);
                     }
 
                 } catch (IOException e) {

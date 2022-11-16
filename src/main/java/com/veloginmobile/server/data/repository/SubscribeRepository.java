@@ -9,6 +9,4 @@ import java.util.List;
 public interface SubscribeRepository  extends JpaRepository<Subscribe, Long> {
 
     Subscribe findByUser(User user);
-    //List<String> findAllSubscribers();
-
 }

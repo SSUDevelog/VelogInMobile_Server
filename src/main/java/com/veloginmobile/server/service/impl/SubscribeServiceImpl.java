@@ -62,7 +62,8 @@ public class SubscribeServiceImpl implements SubscribeService {
     //inputname에서 True가 떴을 때만 이 메소드가 호출되므로 실제 존재여부를 또 체크 할 필요는 없습니다!
     //따라서 이 메소드는 단순히 구독자를 '추가'하는 기능만 가지면 될 것 같습니다.
     //이 주석은 확인하시면 지워주세요 :)
-    public void addSubscribe(String uid, String subscriber) {
+    public void
+    addSubscribe(String uid, String subscriber) {
 
         User user = userRepository.getByUid(uid);
         Subscribe subscribe = subscribeRepository.findByUser(user);
