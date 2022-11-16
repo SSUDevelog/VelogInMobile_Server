@@ -77,18 +77,4 @@ public class SubscribeController {
         return ResponseEntity.status(HttpStatus.OK).body(subscribeRequestDto);
     }
 
-    @ExceptionHandler(value = IOException.class)
-    public ResponseEntity<Map<String, String>> ExceptionHandler(IOException e) {
-        HttpHeaders responseHeaders = new HttpHeaders();
-        HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
-
-        LOGGER.error("ExceptionHandler 호출, {}, {}", e.getCause(), e.getMessage());
-
-        Map<String, String> map = new HashMap<>();
-        map.put("error type", httpStatus.getReasonPhrase());
-        map.put("code", "500");
-        map.put("messge", "에러 발생");
-
-        return new ResponseEntity<>(map, responseHeaders, httpStatus);
-    }
 }
