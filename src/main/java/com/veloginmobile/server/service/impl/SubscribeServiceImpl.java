@@ -58,6 +58,7 @@ public class SubscribeServiceImpl implements SubscribeService {
         return subscriberPostResultDto;
     }
 
+
     //반환형 나중에 성공여부 DTO로 바꾸기
     public void addSubscribe(String uid, String subscriber) {
 

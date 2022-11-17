@@ -54,11 +54,6 @@ public class SignController {
         return signUpResultDto;
     }
 
-    @GetMapping(value = "/exception")
-    public void exceptionTest() throws RuntimeException {
-        throw new RuntimeException("접근이 금지되었습니다.");
-    }
-
     @ExceptionHandler(value = RuntimeException.class)
     public ResponseEntity<Map<String, String>> ExceptionHandler(RuntimeException e) {
         HttpHeaders responseHeaders = new HttpHeaders();
@@ -68,8 +63,8 @@ public class SignController {
 
         Map<String,String> map = new HashMap<>();
         map.put("error type", httpStatus.getReasonPhrase());
-        map.put("cpde", "400");
-        map.put("messge", "에러 발생");
+        map.put("code", "400");
+        map.put("message", "에러 발생");
 
         return new ResponseEntity<>(map, responseHeaders, httpStatus);
     }

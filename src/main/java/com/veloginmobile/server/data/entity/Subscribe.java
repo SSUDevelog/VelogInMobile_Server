@@ -25,4 +25,5 @@ public class Subscribe {
 
     @ElementCollection
     private List<String> subscribers = new ArrayList<>();
+
 }
