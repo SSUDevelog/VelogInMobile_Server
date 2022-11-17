@@ -1,5 +1,4 @@
-package com.veloginmobile.server.data.dto.subscribe;
-
+package com.veloginmobile.server.data.dto.tag;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class SubscribePostDto {
+public class TagPostDto {
     String name;
     String title;
     String summary;
@@ -23,12 +22,12 @@ public class SubscribePostDto {
     int comment;
     int like;
     String img;
-    String url;
     List<String> tag = new ArrayList<>();
+    String url;
 
-    public static Comparator<SubscribePostDto> compareByDate = new Comparator<SubscribePostDto>() {
+    public static Comparator<TagPostDto> compareByDate = new Comparator<TagPostDto>() {
         @Override
-        public int compare(SubscribePostDto o1, SubscribePostDto o2) {
+        public int compare(TagPostDto o1, TagPostDto o2) {
             if(o1.getDate().contains("방금 전") || o2.getDate().contains("방금 전")){
                 if(o1.getDate().contains("방금 전")) return -1; else return 1;
             }
