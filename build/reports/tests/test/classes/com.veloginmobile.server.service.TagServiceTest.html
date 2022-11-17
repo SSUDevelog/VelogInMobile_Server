@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - TagServiceTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>TagServiceTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.veloginmobile.server.service.html">com.veloginmobile.server.service</a> &gt; TagServiceTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">2</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">3.634s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">getSubscriberPostsTest()</td>
+<td class="success">0.751s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">sortSubscribersPostTest()</td>
+<td class="success">2.883s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>14:39:36.299 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+14:39:36.310 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+14:39:36.341 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.veloginmobile.server.service.TagServiceTest] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+14:39:36.352 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.veloginmobile.server.service.TagServiceTest], using SpringBootContextLoader
+14:39:36.355 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.veloginmobile.server.service.TagServiceTest]: class path resource [com/veloginmobile/server/service/TagServiceTest-context.xml] does not exist
+14:39:36.355 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.veloginmobile.server.service.TagServiceTest]: class path resource [com/veloginmobile/server/service/TagServiceTestContext.groovy] does not exist
+14:39:36.355 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.veloginmobile.server.service.TagServiceTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+14:39:36.356 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.veloginmobile.server.service.TagServiceTest]: TagServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14:39:36.390 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.veloginmobile.server.service.TagServiceTest]
+14:39:36.436 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [C:\Users\KJS\Documents\DV\OpenSource\VelogInMobile_Server\build\classes\java\main\com\veloginmobile\server\ServerApplication.class]
+14:39:36.437 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.veloginmobile.server.ServerApplication for test class com.veloginmobile.server.service.TagServiceTest
+14:39:36.536 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.veloginmobile.server.service.TagServiceTest]: using defaults.
+14:39:36.537 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+14:39:36.552 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@29876704, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4816c290, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@4940809c, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@16423501, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4efcf8a, org.springframework.test.context.support.DirtiesContextTestExecutionListener@7a138fc5, org.springframework.test.context.transaction.TransactionalTestExecutionListener@379ab47b, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@307765b4, org.springframework.test.context.event.EventPublishingTestExecutionListener@4a9e6faf, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@2c95ac9e, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@4e4efc1b, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@459f7aa3, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@7cc586a8, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@7db534f2, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@44a2b17b]
+14:39:36.556 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@2e77b8cf testClass = TagServiceTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@2c4ca0f9 testClass = TagServiceTest, locations = '{}', classes = '{class com.veloginmobile.server.ServerApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@66565121, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@ebaa6cb, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@604c5de8, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@2a640157, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@1477089c, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@5e600dd5], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.7.4)
+
+[2022-11-17 14:39:36.840] [INFO ] [Test worker] com.veloginmobile.server.service.TagServiceTest Starting TagServiceTest using Java 17.0.4.1 on DESKTOP-RUAVBMR with PID 27084 (started by KJS in C:\Users\KJS\Documents\DV\OpenSource\VelogInMobile_Server)
+[2022-11-17 14:39:36.841] [INFO ] [Test worker] com.veloginmobile.server.service.TagServiceTest No active profile set, falling back to 1 default profile: &quot;default&quot;
+[2022-11-17 14:39:36.848] [INFO ] [background-preinit] org.hibernate.validator.internal.util.Version HV000001: Hibernate Validator 6.2.5.Final
+[2022-11-17 14:39:37.540] [INFO ] [Test worker] org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2022-11-17 14:39:37.614] [INFO ] [Test worker] org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 63 ms. Found 5 JPA repository interfaces.
+[2022-11-17 14:39:38.193] [INFO ] [Test worker] org.hibernate.jpa.internal.util.LogHelper HHH000204: Processing PersistenceUnitInfo [name: default]
+[2022-11-17 14:39:38.248] [INFO ] [Test worker] org.hibernate.Version HHH000412: Hibernate ORM core version 5.6.11.Final
+[2022-11-17 14:39:38.398] [INFO ] [Test worker] org.hibernate.annotations.common.Version HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[2022-11-17 14:39:38.500] [INFO ] [Test worker] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Starting...
+[2022-11-17 14:39:38.767] [INFO ] [Test worker] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Start completed.
+[2022-11-17 14:39:38.782] [INFO ] [Test worker] org.hibernate.dialect.Dialect HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+Hibernate: 
+    
+    alter table notification_receivers 
+       drop 
+       foreign key FKpvipidlkyvdd4thyyhwujet0d
+Hibernate: 
+    
+    alter table subscribe 
+       drop 
+       foreign key FK31lkjb2x51cw4bljtmswtj6r
+Hibernate: 
+    
+    alter table subscribe_subscribers 
+       drop 
+       foreign key FKi1umh5a851f61ki2a100cx3jj
+Hibernate: 
+    
+    alter table tag 
+       drop 
+       foreign key FKld85w5kr7ky5w4wda3nrdo0p8
+Hibernate: 
+    
+    alter table tag_tags 
+       drop 
+       foreign key FKmtmt3vgd7dxivjhi12bjiw932
+Hibernate: 
+    
+    alter table user_roles 
+       drop 
+       foreign key FK55itppkw3i07do3h7qoclqd4k
+Hibernate: 
+    
+    drop table if exists notification
+Hibernate: 
+    
+    drop table if exists notification_receivers
+Hibernate: 
+    
+    drop table if exists subscribe
+Hibernate: 
+    
+    drop table if exists subscribe_subscribers
+Hibernate: 
+    
+    drop table if exists tag
+Hibernate: 
+    
+    drop table if exists tag_tags
+Hibernate: 
+    
+    drop table if exists testdata
+Hibernate: 
+    
+    drop table if exists user
+Hibernate: 
+    
+    drop table if exists user_roles
+Hibernate: 
+    
+    create table notification (
+       id bigint not null auto_increment,
+        group_name varchar(255) not null,
+        primary key (id)
+    ) engine=InnoDB
+Hibernate: 
+    
+    create table notification_receivers (
+       notification_id bigint not null,
+        receivers varchar(255)
+    ) engine=InnoDB
+Hibernate: 
+    
+    create table subscribe (
+       id bigint not null auto_increment,
+        user_id bigint,
+        primary key (id)
+    ) engine=InnoDB
+Hibernate: 
+    
+    create table subscribe_subscribers (
+       subscribe_id bigint not null,
+        subscribers varchar(255)
+    ) engine=InnoDB
+Hibernate: 
+    
+    create table tag (
+       id bigint not null auto_increment,
+        user_id bigint,
+        primary key (id)
+    ) engine=InnoDB
+Hibernate: 
+    
+    create table tag_tags (
+       tag_id bigint not null,
+        tags varchar(255)
+    ) engine=InnoDB
+Hibernate: 
+    
+    create table testdata (
+       number bigint not null auto_increment,
+        create_at datetime(6),
+        name varchar(255) not null,
+        price integer not null,
+        stock integer not null,
+        updated_at datetime(6),
+        primary key (number)
+    ) engine=InnoDB
+Hibernate: 
+    
+    create table user (
+       id bigint not null auto_increment,
+        name varchar(255) not null,
+        password varchar(255) not null,
+        uid varchar(255) not null,
+        primary key (id)
+    ) engine=InnoDB
+Hibernate: 
+    
+    create table user_roles (
+       user_id bigint not null,
+        roles varchar(255)
+    ) engine=InnoDB
+Hibernate: 
+    
+    alter table notification 
+       add constraint UK_hmefuddx9x31sn386s9qv4xcc unique (group_name)
+Hibernate: 
+    
+    alter table user 
+       add constraint UK_a7hlm8sj8kmijx6ucp7wfyt31 unique (uid)
+Hibernate: 
+    
+    alter table notification_receivers 
+       add constraint FKpvipidlkyvdd4thyyhwujet0d 
+       foreign key (notification_id) 
+       references notification (id)
+Hibernate: 
+    
+    alter table subscribe 
+       add constraint FK31lkjb2x51cw4bljtmswtj6r 
+       foreign key (user_id) 
+       references user (id)
+Hibernate: 
+    
+    alter table subscribe_subscribers 
+       add constraint FKi1umh5a851f61ki2a100cx3jj 
+       foreign key (subscribe_id) 
+       references subscribe (id)
+Hibernate: 
+    
+    alter table tag 
+       add constraint FKld85w5kr7ky5w4wda3nrdo0p8 
+       foreign key (user_id) 
+       references user (id)
+Hibernate: 
+    
+    alter table tag_tags 
+       add constraint FKmtmt3vgd7dxivjhi12bjiw932 
+       foreign key (tag_id) 
+       references tag (id)
+Hibernate: 
+    
+    alter table user_roles 
+       add constraint FK55itppkw3i07do3h7qoclqd4k 
+       foreign key (user_id) 
+       references user (id)
+[2022-11-17 14:39:39.865] [INFO ] [Test worker] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2022-11-17 14:39:39.872] [INFO ] [Test worker] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2022-11-17 14:39:40.233] [INFO ] [Test worker] com.veloginmobile.server.config.security.JwtTokenProvider [init] JwtTokenProvider 내 secretKey 초기화 시작
+[2022-11-17 14:39:40.233] [INFO ] [Test worker] com.veloginmobile.server.config.security.JwtTokenProvider [init] JwtTokenProvider 내 secretKey 초기화 완료
+[2022-11-17 14:39:40.310] [WARN ] [Test worker] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2022-11-17 14:39:40.472] [INFO ] [Test worker] com.veloginmobile.server.service.impl.NotificationServiceImpl Firebase application has been initialized
+[2022-11-17 14:39:41.278] [INFO ] [Test worker] springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+[2022-11-17 14:39:42.155] [WARN ] [Test worker] org.springframework.security.config.annotation.web.builders.WebSecurity You are asking Spring Security to ignore Ant [pattern='/v2/api-docs']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+[2022-11-17 14:39:42.156] [INFO ] [Test worker] org.springframework.security.web.DefaultSecurityFilterChain Will not secure Ant [pattern='/v2/api-docs']
+[2022-11-17 14:39:42.156] [WARN ] [Test worker] org.springframework.security.config.annotation.web.builders.WebSecurity You are asking Spring Security to ignore Ant [pattern='/swagger-resources/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+[2022-11-17 14:39:42.156] [INFO ] [Test worker] org.springframework.security.web.DefaultSecurityFilterChain Will not secure Ant [pattern='/swagger-resources/**']
+[2022-11-17 14:39:42.156] [WARN ] [Test worker] org.springframework.security.config.annotation.web.builders.WebSecurity You are asking Spring Security to ignore Ant [pattern='/swagger-ui.html']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+[2022-11-17 14:39:42.156] [INFO ] [Test worker] org.springframework.security.web.DefaultSecurityFilterChain Will not secure Ant [pattern='/swagger-ui.html']
+[2022-11-17 14:39:42.156] [WARN ] [Test worker] org.springframework.security.config.annotation.web.builders.WebSecurity You are asking Spring Security to ignore Ant [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+[2022-11-17 14:39:42.156] [INFO ] [Test worker] org.springframework.security.web.DefaultSecurityFilterChain Will not secure Ant [pattern='/webjars/**']
+[2022-11-17 14:39:42.156] [WARN ] [Test worker] org.springframework.security.config.annotation.web.builders.WebSecurity You are asking Spring Security to ignore Ant [pattern='/swagger/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+[2022-11-17 14:39:42.156] [INFO ] [Test worker] org.springframework.security.web.DefaultSecurityFilterChain Will not secure Ant [pattern='/swagger/**']
+[2022-11-17 14:39:42.156] [WARN ] [Test worker] org.springframework.security.config.annotation.web.builders.WebSecurity You are asking Spring Security to ignore Ant [pattern='/sign-api/exception']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+[2022-11-17 14:39:42.156] [INFO ] [Test worker] org.springframework.security.web.DefaultSecurityFilterChain Will not secure Ant [pattern='/sign-api/exception']
+[2022-11-17 14:39:42.236] [INFO ] [Test worker] org.springframework.security.web.DefaultSecurityFilterChain Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@63fe055, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@50572c04, org.springframework.security.web.context.SecurityContextPersistenceFilter@44ad3c5e, org.springframework.security.web.header.HeaderWriterFilter@4b38d912, org.springframework.security.web.authentication.logout.LogoutFilter@5e81b406, com.veloginmobile.server.config.security.JwtAuthenticationFilter@ab90b8c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4842a683, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2f4c83f1, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@640a80aa, org.springframework.security.web.session.SessionManagementFilter@18eb6ea3, org.springframework.security.web.access.ExceptionTranslationFilter@54c9c09c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7cc966a9]
+[2022-11-17 14:39:42.291] [INFO ] [Test worker] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper Context refreshed
+[2022-11-17 14:39:42.309] [INFO ] [Test worker] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper Found 1 custom documentation plugin(s)
+[2022-11-17 14:39:42.356] [INFO ] [Test worker] springfox.documentation.spring.web.scanners.ApiListingReferenceScanner Scanning for api listing references
+[2022-11-17 14:39:42.496] [INFO ] [Test worker] com.veloginmobile.server.service.TagServiceTest Started TagServiceTest in 5.912 seconds (JVM running for 6.867)
+[TagPostDto(name=bluedot09, title=[프로그래머스] 개미 군단, summary=개미 군단이 사냥을 나가려고 합니다. 개미군단은 사냥감의 체력에 딱 맞는 병력을 데리고 나가려고 합니다. 장군개미는 5의 공격력을, 병정개미는 3의 공격력을 일개미는 1의 공격력을 가지고 있습니다. 예를 들어 체력 23의 여치를 사냥하려고 할 때, 일개미 23마리를 데, date=26분 전, comment=0, like=0, img=https://velog.velcdn.com/images/bluedot09/post/408abddf-df63-4730-becb-7e47eaf21e69/image.jpg, tag=[Python3, 코딩테스트, 프로그래머스], url=/@bluedot09/프로그래머스-개미-군단), TagPostDto(name=bluedot09, title=[프로그래머스] 가위 바위 보, summary=가위는 2 바위는 0 보는 5로 표현합니다. 가위 바위 보를 내는 순서대로 나타낸 문자열 rsp가 매개변수로 주어질 때, rsp에 저장된 가위 바위 보를 모두 이기는 경우를 순서대로 나타낸 문자열을 return하도록 solution 함수를 완성해보세요.0 &amp;lt; rs, date=약 1시간 전, comment=0, like=0, img=https://velog.velcdn.com/images/bluedot09/post/e4916cff-8e96-4c22-be5f-55713e0da925/image.jpg, tag=[Python3, 코딩테스트, 프로그래머스], url=/@bluedot09/프로그래머스-가위-바위-보), TagPostDto(name=bluedot09, title=[프로그래머스] 다음에 올 숫자, summary=등차수열 혹은 등비수열 common이 매개변수로 주어질 때, 마지막 원소 다음으로 올 숫자를 return 하도록 solution 함수를 완성해보세요.2 &amp;lt; common의 길이 &amp;lt; 1,000\-1,000 &amp;lt; common의 원소 &amp;lt; 2,000등차수열, date=약 1시간 전, comment=0, like=0, img=https://velog.velcdn.com/images/bluedot09/post/1e3d2aea-1667-4d53-9c61-de5e6ffd0c9c/image.jpg, tag=[Python3, 코딩테스트, 프로그래머스], url=/@bluedot09/프로그래머스-다음에-올-숫자), TagPostDto(name=bluedot09, title=[프로그래머스] 잘라서 배열로 저장하기, summary=문자열 my_str과 n이 매개변수로 주어질 때, my_str을 길이 n씩 잘라서 저장한 배열을 return하도록 solution 함수를 완성해주세요.1 ≤ my_str의 길이 ≤ 1001 ≤ n ≤ my_str의 길이my_str은 알파벳 소문자, 대문자, 숫자로 이루, date=약 2시간 전, comment=0, like=0, img=https://velog.velcdn.com/images/bluedot09/post/5ee4d895-174c-45e7-8527-bd6504cf68c3/image.jpg, tag=[Python3, 코딩테스트, 프로그래머스], url=/@bluedot09/프로그래머스-잘라서-배열로-저장하기), TagPostDto(name=bluedot09, title=[프로그래머스] 369게임, summary=머쓱이는 친구들과 369게임을 하고 있습니다. 369게임은 1부터 숫자를 하나씩 대며 3, 6, 9가 들어가는 숫자는 숫자 대신 3, 6, 9의 개수만큼 박수를 치는 게임입니다. 머쓱이가 말해야하는 숫자 order가 매개변수로 주어질 때, 머쓱이가 쳐야할 박수 횟수를, date=약 6시간 전, comment=0, like=0, img=https://velog.velcdn.com/images/bluedot09/post/b42580be-a4a0-4955-9f58-af78735eccfa/image.jpg, tag=[Python3, 코딩테스트, 프로그래머스], url=/@bluedot09/프로그래머스-369게임), TagPostDto(name=bluedot09, title=[프로그래머스] 문자열 정렬하기(2), summary=영어 대소문자로 이루어진 문자열 my_string이 매개변수로 주어질 때, my_string을 모두 소문자로 바꾸고 알파벳 순서대로 정렬한 문자열을 return 하도록 solution 함수를 완성해보세요.0 &amp;lt; my_string 길이 &amp;lt; 100채점 결과정확성, date=약 6시간 전, comment=0, like=0, img=https://velog.velcdn.com/images/bluedot09/post/4d72f477-b6a0-435f-919d-e6cb015fe899/image.jpg, tag=[Python3, 코딩테스트, 프로그래머스], url=/@bluedot09/프로그래머스-문자열-정렬하기2), TagPostDto(name=bluedot09, title=[프로그래머스] 숨어있는 숫자의 덧셈(1), summary=문자열 my_string이 매개변수로 주어집니다. my_string안의 모든 자연수들의 합을 return하도록 solution 함수를 완성해주세요.1 ≤ my_string의 길이 ≤ 1,000my_string은 소문자, 대문자 그리고 한자리 자연수로만 구성되어있습니다., date=약 6시간 전, comment=0, like=0, img=https://velog.velcdn.com/images/bluedot09/post/85b8b976-492f-48f3-a5ff-0dfc5401e4bf/image.jpg, tag=[Python3, 코딩테스트, 프로그래머스], url=/@bluedot09/프로그래머스-숨어있는-숫자의-덧셈1), TagPostDto(name=bluedot09, title=[프로그래머스] 문자열 정렬하기(1), summary=문자열 my_string이 매개변수로 주어질 때, my_string 안에 있는 숫자만 골라 오름차순 정렬한 리스트를 return 하도록 solution 함수를 작성해보세요.1 ≤ my_string의 길이 ≤ 100my_string에는 숫자가 한 개 이상 포함되어 있습니, date=약 6시간 전, comment=0, like=0, img=, tag=[Python3, 코딩테스트, 프로그래머스], url=/@bluedot09/프로그래머스-문자열-정렬하기1), TagPostDto(name=bluedot09, title=[프로그래머스] k의 개수, summary=1부터 13까지의 수에서, 1은 1, 10, 11, 12, 13 이렇게 총 6번 등장합니다. 정수 i, j, k가 매개변수로 주어질 때, i부터 j까지 k가 몇 번 등장하는지 return 하도록 solution 함수를 완성해주세요.1 ≤ i &amp;lt; j ≤ 100,00, date=약 6시간 전, comment=0, like=0, img=https://velog.velcdn.com/images/bluedot09/post/e9cda991-0e46-40ce-86fc-a752dadde560/image.jpg, tag=[Python3, 코딩테스트, 프로그래머스], url=/@bluedot09/프로그래머스-k의-개수), TagPostDto(name=bluedot09, title=[프로그래머스] A로 B 만들기, summary=문자열 before와 after가 매개변수로 주어질 때, before의 순서를 바꾸어 after를 만들 수 있으면 1을, 만들 수 없으면 0을 return 하도록 solution 함수를 완성해보세요.0 &amp;lt; before의 길이 == after의 길이 &amp;lt; 1,0, date=약 7시간 전, comment=0, like=0, img=https://velog.velcdn.com/images/bluedot09/post/53a0f3c4-2920-41d0-a886-e2b46ea3aa37/image.jpg, tag=[Python3, 코딩테스트, 프로그래머스], url=/@bluedot09/프로그래머스-A로-B-만들기), TagPostDto(name=bluedot09, title=[프로그래머스] 자릿수 더하기, summary=정수 n이 매개변수로 주어질 때 n의 각 자리 숫자의 합을 return하도록 solution 함수를 완성해주세요0 ≤ n ≤ 1,000,000채점 결과정확성: 100.0합계: 100.0 / 100.0, date=약 9시간 전, comment=0, like=0, img=https://velog.velcdn.com/images/bluedot09/post/ad2b6921-2ad2-4aff-b322-dcfa97b519f9/image.jpg, tag=[Python3, 코딩테스트, 프로그래머스], url=/@bluedot09/프로그래머스-자릿수-더하기), TagPostDto(name=bluedot09, title=[프로그래머스] 순서쌍의 개수, summary=순서쌍이란 두 개의 숫자를 순서를 정하여 짝지어 나타낸 쌍으로 (a, b)로 표기합니다. 자연수 n이 매개변수로 주어질 때 두 숫자의 곱이 n인 자연수 순서쌍의 개수를 return하도록 solution 함수를 완성해주세요.1 ≤ n ≤ 1,000,000a % b : 나, date=약 9시간 전, comment=0, like=0, img=https://velog.velcdn.com/images/bluedot09/post/76d924c6-d3db-4b8c-bd39-d4fa926469d1/image.jpg, tag=[Python3, 코딩테스트, 프로그래머스], url=/@bluedot09/프로그래머스-순서쌍의-개수), TagPostDto(name=bluedot09, title=[프로그래머스] 배열의 유사도, summary=두 배열이 얼마나 유사한지 확인해보려고 합니다. 문자열 배열 s1과 s2가 주어질 때 같은 원소의 개수를 return하도록 solution 함수를 완성해주세요.1 ≤ s1, s2의 길이 ≤ 1001 ≤ s1, s2의 원소의 길이 ≤ 10s1과 s2의 원소는 알파벳 소문, date=약 9시간 전, comment=0, like=0, img=https://velog.velcdn.com/images/bluedot09/post/0c5ef146-5235-42cd-8f9e-7caf2a493a10/image.jpg, tag=[Python3, 코딩테스트, 프로그래머스], url=/@bluedot09/프로그래머스-배열의-유사도), TagPostDto(name=bluedot09, title=[프로그래머스] 삼각형의 완성조건 (1), summary=선분 세 개로 삼각형을 만들기 위해서는 다음과 같은 조건을 만족해야 합니다.가장 긴 변의 길이는 다른 두 변의 길이의 합보다 작아야 합니다.삼각형의 세 변의 길이가 담긴 배열 sides이 매개변수로 주어집니다. 세 변으로 삼각형을 만들 수 있다면 1, 만들 수 없다면, date=약 12시간 전, comment=0, like=0, img=https://velog.velcdn.com/images/bluedot09/post/f7bffbc8-a4bb-4816-ad33-1179db10d27b/image.jpg, tag=[Python3, 코딩테스트, 프로그래머스], url=/@bluedot09/프로그래머스-삼각형의-완성조건-1), TagPostDto(name=zeroequaltwo, title=프로그래머스 Lv.1 : 문자열 내림차순으로 배치하기, summary=문제 프로그래머스 문제 내 풀이 개선점 아래처럼 풀면 sort, reverse 두번이나 안돌려도 돼서 더 나은 거 같다. 문자열 차순 조정할 땐 이렇게 하는 거구나 배웠다., date=약 12시간 전, comment=0, like=0, img=, tag=[코딩테스트, 프로그래머스], url=/@zeroequaltwo/프로그래머스-Lv.1-문자열-내림차순으로-배치하기), TagPostDto(name=bluedot09, title=[프로그래머스] 영어가 싫어요, summary=영어가 싫은 머쓱이는 영어로 표기되어있는 숫자를 수로 바꾸려고 합니다. 문자열 numbers가 매개변수로 주어질 때, numbers를 정수로 바꿔 return 하도록 solution 함수를 완성해 주세요.numbers는 소문자로만 구성되어 있습니다.numbers는 &quot;z, date=약 12시간 전, comment=0, like=0, img=https://velog.velcdn.com/images/bluedot09/post/699ab7f5-3689-41c5-8aaf-7d8aa90859ce/image.jpg, tag=[Python3, 코딩테스트, 프로그래머스], url=/@bluedot09/프로그래머스-영어가-싫어요), TagPostDto(name=zeroequaltwo, title=프로그래머스 Lv.1 : 내적, summary=문제 프로그래머스 문제 내 풀이, date=약 12시간 전, comment=0, like=0, img=, tag=[코딩테스트, 프로그래머스], url=/@zeroequaltwo/프로그래머스-Lv.1-내적-aapkvpi8), TagPostDto(name=s2ul2, title=[프로그래머스]level3-디스크 컨트롤러-Python[파이썬], summary=https&amp;#x3A;//school.programmers.co.kr/learn/courses/30/lessons/42627main idea : 현재 시점에서 처리할 수 있는 작업들 중 소요시간이 가장 작은 작업들 먼저 처리하지만 나는 이렇게 풀면 안된다고 생각했다. e, date=약 12시간 전, comment=0, like=0, img=, tag=[level3, 코딩테스트, 프로그래머스], url=/@s2ul2/프로그래머스level3-디스크-컨트롤러-Python파이썬), TagPostDto(name=zeroequaltwo, title=프로그래머스 Lv.1 : 수박수박수박수박수박수?, summary=문제 프로그래머스 문제 내 풀이 개선점 아래처럼 풀고싶었으나..., date=약 12시간 전, comment=0, like=0, img=, tag=[코딩테스트, 프로그래머스], url=/@zeroequaltwo/프로그래머스-Lv.1-수박수박수박수박수박수), TagPostDto(name=zeroequaltwo, title=프로그래머스 Lv.1 : 가운데 글자 가져오기, summary=문제 프로그래머스 문제 내 풀이, date=약 13시간 전, comment=0, like=0, img=, tag=[코딩테스트, 프로그래머스], url=/@zeroequaltwo/프로그래머스-Lv.1-가운데-글자-가져오기)]
+TagPostResultDto(tagPostDtoList=[TagPostDto(name=rudans987, title=[프로그래머스]점프와 순간 이동(js), summary=https&amp;#x3A;//school.programmers.co.kr/learn/courses/30/lessons/12980거리가 0이 될 때까지 반복한다.짝수 일 경우 순간이동만 하면 되기 때문에 2로 계속 나눈다.홀수 일 경우 1만큼 점프했을 때 건전지를 1 소모하므, date=14분 전, comment=0, like=0, img=, tag=[알고리즘, 프로그래머스 lv2], url=/@rudans987/프로그래머스점프와-순간-이동js), TagPostDto(name=uheejoon, title=백준 1448번 삼각형 만들기 문제풀기(C++), summary=빗변의 길이 빗변을 제외한 두 변의 길이의 합, date=17분 전, comment=0, like=0, img=, tag=[greedy, 백준, 알고리즘], url=/@uheejoon/백준-1448번-삼각형-만들기-문제풀기C), TagPostDto(name=newbieski, title=[백준] 25559. 패스, summary=https&amp;#x3A;//www.acmicpc.net/problem/25559문제 요약1 ~ N까지 원형으로 모여있음1번부터 패스패스 해서 한번만 패스 받도록패스는 1 ~ N 까지 가능접근법예전에 한 번 접했던 문제 같음1이면 1출력n이 있기 때문에 n이 중간에 끼면 패, date=20분 전, comment=0, like=0, img=, tag=[boj, 백준, 알고리즘], url=/@newbieski/백준-25559.-패스), TagPostDto(name=getsoss, title=백준 13900, summary=백준 13900 풀이, date=26분 전, comment=0, like=0, img=https://velog.velcdn.com/images/getsoss/post/c4a3299a-da03-44a7-b64d-e2f6ba53772f/image.png, tag=[누적 합, 백준, 수학, 알고리즘, 파이썬], url=/@getsoss/백준-13900), TagPostDto(name=freewill0819, title=알고리즘과 자료구조 공부, summary=요즘은 자료구조와 알고리즘의 기초를 공부하는중이다.자료구조와 알고리즘의 관한 내용은 더 공부하고 정리해야겠다.사실 비전공자인 나에게는 모든 부분이 어렵고 생소하다.국비교육을 수료하였지만 강사님의 건강상의 문제로 중간에 강사님이 교체되면서 많은 문제들이 생겼었다. 패스트, date=약 1시간 전, comment=0, like=0, img=https://velog.velcdn.com/images/freewill0819/post/84933aaa-0da0-4bd6-9e8c-96c493de360e/image.jpeg, tag=[알고리즘, 자료구조, 자바], url=/@freewill0819/알고리즘과-자료구조-공부), TagPostDto(name=kimnahee1529, title=[그리디 알고리즘] split( )/BOJ 1541, summary=BOJ 1541 ?? -, +를 기준으로 split 하기, date=약 1시간 전, comment=0, like=0, img=, tag=[그리디, 알고리즘], url=/@kimnahee1529/그리디-알고리즘-split-BOJ-1541), TagPostDto(name=mohai2618, title=백준 21939 문제 추천 시스템, summary=이중 우선순위 큐 문제, date=약 1시간 전, comment=0, like=0, img=, tag=[알고리즘], url=/@mohai2618/백준-21939-문제-추천-시스템), TagPostDto(name=marha-hwang, title=[DP]LCS문제 (feat 백준9251,9252), summary=LCS(Longest Common Subsequence, 최장 공통 부분 수열)문제는 두 수열이 주어졌을 때, 모두의 부분 수열이 되는 수열 중 가장 긴 것을 찾는 문제이다., date=약 1시간 전, comment=0, like=0, img=https://velog.velcdn.com/images/marha-hwang/post/e897601c-ed33-4932-ab3d-07af10906240/image.png, tag=[알고리즘, 자바], url=/@marha-hwang/DPLCS문제-feat-백준92519252), TagPostDto(name=-_o, title=[백준 풀이] 17219번, summary=https&amp;#x3A;//www.acmicpc.net/problem/17219주소 - 비밀번호 형태를 보고딕셔너리를 활용하면 되겠다고 생각했다., date=약 1시간 전, comment=0, like=0, img=, tag=[알고리즘], url=/@-_o/백준-풀이-17219번), TagPostDto(name=kimnahee1529, title=[그리디 알고리즘]이차원 리스트로 다중정렬하기/BOJ 1931, summary=이차원 리스트의 정렬 방식은 데이터의 입력 순서를 통하여 조정할 수 있다. 두개의 숫자를 한줄에 입력받고 총 5줄을 입력받을 때 두번째 숫자를 기준으로 정렬하고 싶으면 ex) 5 1 7 9 2 4 7 3 7 8 3 ??E,S 순서로 정렬됨 ?앞의 순서가 먼저 정렬됨 3차원 리스트도 마찬가지로 앞의 순서가 먼저 정렬됨 ??E, S, N 순서로 정렬..., date=약 2시간 전, comment=0, like=0, img=, tag=[그리디, 다중정렬, 알고리즘, 이차원리스트, 파이썬], url=/@kimnahee1529/이차원-리스트의-정렬방식), TagPostDto(name=marha-hwang, title=DP 동적계획법 정리, summary=복잡한 문제를 여러 개의 작은 문제들로 나누고 작은 문제를 해결하여 복잡한 문제의 답을 구하는 방식, date=약 2시간 전, comment=0, like=0, img=, tag=[DP, 알고리즘], url=/@marha-hwang/DP-동적계획법-정리), TagPostDto(name=jjb8966, title=동적 프로그래밍 (Dynamic Programming), summary=문제의 크기를 변화해가면서 작은 문제의 결과를 이용해 큰 문제를 빠르게 계산하는 알고리즘먼저 완전 탐색(brute force)를 시도해 본 후 탐색되는 경우가 매우 많아 시간초과가 날 경우 DP를 시도해 볼 수 있음규격화된 방법을 외워서 연습할 것구현 코드 자체는 매우, date=약 2시간 전, comment=0, like=0, img=, tag=[DP, 알고리즘], url=/@jjb8966/동적-프로그래밍-Dynamic-Programming), TagPostDto(name=witwint, title=java 백준 2164, summary=N장의 카드가 있다. 각각의 카드는 차례로 1부터 N까지의 번호가 붙어 있으며, 1번 카드가 제일 위에, N번 카드가 제일 아래인 상태로 순서대로 카드가 놓여 있다.이제 다음과 같은 동작을 카드가 한 장 남을 때까지 반복하게 된다. 우선, 제일 위에 있는 카드를 바닥, date=약 2시간 전, comment=0, like=0, img=, tag=[알고리즘], url=/@witwint/java-백준-2164), TagPostDto(name=ghkdgus29, title=유클리드 호제법 (최대공약수), summary=특징직접 나눠서 구하는 것보다 빠름GCD(a, b) = GCD(b, a%b) 와 같다.O(logN) 시간 복잡도구현재귀함수 사용재귀함수 사용 X출처 : 백준 - 코드 플러스 강의 (알고리즘 기초 1/2), date=약 3시간 전, comment=0, like=0, img=, tag=[알고리즘], url=/@ghkdgus29/유클리드-호제법-최대공약수), TagPostDto(name=okko8522, title=알고리즘 이론: 스택/큐, summary=스택/큐, date=약 3시간 전, comment=0, like=0, img=https://velog.velcdn.com/images/okko8522/post/55f1911f-2890-4334-b027-4b12b778c57e/image.png, tag=[algorithm, queue, stack], url=/@okko8522/알고리즘-이론-스택큐), TagPostDto(name=ddosang, title=[Algorithm?] 정올 2247 : 도서관, summary=문제, date=약 3시간 전, comment=0, like=0, img=https://velog.velcdn.com/images/ddosang/post/8a9c6904-1ce2-4e47-abea-2cf0f5b532e3/image.jpeg, tag=[algorithm, 정올], url=/@ddosang/Algorithm-정올-2247), TagPostDto(name=ghkdgus29, title=소수 찾기, summary=특징소수 찾기는 2가지 유형으로 나뉜다.어떤 수 N 이 소수인지 아닌지 판별N 보다 작거나 같은 소수를 모두 찾기 경우 1루트 N 까지의 검사를 통해 해결O(√N) 시간복잡도경우 2에라토스테네스의 체 이용소수의 배수를 계속해서 지운다.O(NloglogN) 시간복잡도백준, date=약 3시간 전, comment=0, like=0, img=, tag=[알고리즘], url=/@ghkdgus29/소수-찾기), TagPostDto(name=dudaksdk3214, title=[Algorithm] Algorithm Test, summary=Algorithm time attack was conducted using the programmer's coding test website. Problem descriptionThe clothing store offers a 5% discount for purchas, date=약 4시간 전, comment=0, like=0, img=, tag=[algorithm], url=/@dudaksdk3214/Algorithm-Algorithm-Test), TagPostDto(name=sugyeonghh, title=[section 2] 자료구조 / 알고리즘 - 재귀, summary=21일차 학습 내용, date=약 4시간 전, comment=0, like=0, img=https://velog.velcdn.com/images/sugyeonghh/post/3c3e6d1b-b792-4e34-a81f-2cbf61f9963e/image.png, tag=[Java, SEB BE 42기, recursive, 백엔드, 부트캠프, 알고리즘, 코드스테이츠], url=/@sugyeonghh/section-2-자료구조-알고리즘-재귀), TagPostDto(name=chldmswnl, title=[JS] 프로그래머스 - 파일명 정렬, summary=match 함수 정규식과 일치하면 배열로 리턴한다. \D : 숫자가 아닌것들 (= ) '+' : 한번 이상 반복 \d : 숫자 ( = [0-9] ) aHead, bHead = 숫자가 아닌것들중에 숫자가 나타나기전 첫번째 문자(열) parseInt(a.match(/\d+/)[0]) = 숫자가 아닌게 나타나기전 첫번째 숫자로만 이루어진 문자(열). p..., date=약 4시간 전, comment=0, like=0, img=https://velog.velcdn.com/images/chldmswnl/post/93473cbe-ddd0-4d4a-af54-fbb19efedf07/image.png, tag=[알고리즘, 프로그래머스], url=/@chldmswnl/JS-프로그래머스-파일명-정렬), TagPostDto(name=reggias, title=github를 활용한 협업을 경험하면서, summary=처음으로 github를 활용한 협업을 진행해보았다. 사실 slack으로도 파일을 주고 받을 수 있는 입장이지만 github를 활용할줄도 알아야한다고 보았기에 무작정 github로 해보자고 제안해서 하기로 되었다. 그렇지만 파일을 받아보는건 커녕 업로드하는 방법조차 몰랐, date=약 5시간 전, comment=0, like=0, img=, tag=[github, 경험, 도전, 코딩, 협업], url=/@reggias/github를-활용한-협업을-경험하면서), TagPostDto(name=son950610, title=Today I Learned D - 55, summary=장고 심화 복습 1주차 &amp; docker 2주차, date=약 14시간 전, comment=0, like=0, img=https://velog.velcdn.com/images/son950610/post/139cfe55-1ac3-419d-a2a0-d4d8325fa286/image.png, tag=[TIL, 코딩, 하루일지], url=/@son950610/Today-I-Learned-D-55), TagPostDto(name=duroomi, title=Today I learned (221116) - 12, summary=함수와 조건문을 함께 쓰는 경우 예는 아래와 같다.위와 같은 경우 결과는 '성인입니다.'가 출력된다.퀴즈) 주민등록번호를 입력받아 성별을 출력하는 함수 만들기나의 풀이1)결과는 '남성입니다.'가 출력된다.나의 풀이2)결과는 '여성입니다.'가 출력된다. 처음보다 간결하지, date=약 15시간 전, comment=1, like=0, img=, tag=[개발자, 국비지원, 내일배움캠프, 스파르타코딩클럽, 집합, 초보, 코딩, 튜플, 파이썬, 함수], url=/@duroomi/Today-I-learned-221116-12), TagPostDto(name=joypeb, title=퀵솔트(Quick Sort), summary=이름부터 빨라보이는 정렬 알고리즘 퀵솔트, date=약 20시간 전, comment=0, like=0, img=, tag=[코딩], url=/@joypeb/퀵솔트Quick-Sort), TagPostDto(name=reggias, title=SQL 문법 정리, summary=먼저 SQL은 왜 필요한가 부터 생각해보겠다.SQL은 효과적으로 데이터를 서버에 저장하고 서버로부터 꺼내 열람을 하기위해 필요로 한다. 예를 들어 내가 치킨집 사장이라면 많은 고객들의 번호와 이름에 대한 데이터를 가지고 있을 것이고 나는 그들이 평소 내 가게에서 선호하, date=어제, comment=0, like=0, img=, tag=[sql, 문법, 코딩], url=/@reggias/SQL-문법-정리), TagPostDto(name=jklgus, title=간단한 웹 만들기, summary=이번 과제는 어려웠지만 한번 감을 잡으니 할만하다 느껴지기도 했다. 코드를 처음부터 쓰는것과 의사코드를 js로 옮기는것이 아직 익숙하지 않은것 같다. 앞으로 더 열심히 해야겠다!많은양의 배열을 웹에 띄우려면 어떻게 해야할까? 전번 시간에 배웠던 dom을 활용해서 웹에, date=1일 전, comment=0, like=1, img=https://velog.velcdn.com/images/jklgus/post/1707830d-a736-4e23-b34f-a00b6bb72805/image.png, tag=[코딩, 코린이], url=/@jklgus/간단한-웹-만들기), TagPostDto(name=son950610, title=Today I Learned D - 54, summary=장고 개념정리, date=1일 전, comment=0, like=1, img=https://velog.velcdn.com/images/son950610/post/fa3cf4a4-afd5-45a6-aca2-319132ebd121/image.png, tag=[TIL, 코딩, 하루일지], url=/@son950610/Today-I-Learned-D-54), TagPostDto(name=son950610, title=Today I Learned D - 53, summary=TIL 53, date=2일 전, comment=0, like=0, img=, tag=[TIL, 코딩, 하루일지], url=/@son950610/Today-I-Learned-D-53), TagPostDto(name=_hennessy_, title=페어코딩 스터디 준비 (1편), summary=페어코딩 스터디를 하다보니 내가 네비게이터로서 설명을 해줘야 해서 문제를 좀 설명하면서 머릿속을 정리하려고 한다! 오늘은 수업에서 예제로 나왔던 문제 두가지를 다뤄볼 것이다.문제 자체는 되게 간단한거 같은데 나는 역시 개린이(개발 어린이)라 ㅋㅋㅋ강사님처럼 쒹쒹하는게, date=2일 전, comment=0, like=2, img=https://velog.velcdn.com/images/_hennessy_/post/f444da34-5ee1-443c-aa0a-ea310ecb39e2/image.gif, tag=[Coding, Java, 자바, 코딩, 프로그래밍], url=/@_hennessy_/sbqoc76r), TagPostDto(name=milnil, title=2022.11.15 TIL, summary=10:00 ~ 10:쉽게 배우는 알고리즘 트리-1, 2트리는 비선형 구조, 선형 구조: 스택, 큐 등트리Node: 트리에서 데이터를 저장하는 기본 요소 (저장 공간)Root Node: 트리 맨 위에 있는 노드Level: 최상위 노드를 Level 0으로 하였을 때, 하위, date=2일 전, comment=0, like=0, img=, tag=[공부, 매일, 스파르타코딩클럽, 코딩], url=/@milnil/2022.11.15-TIL), TagPostDto(name=yeram2546, title=스파르타_코딩클럽_1주차, summary=휴우 이번주는 참 바쁜시간이었다! 이것저것 벌려놓은게 많아, 하나하나 습관으로 만들고 계획을 실행하느라고 정신이 쏙....! 스파르타 코딩 클럽에서 왕초보 게임개발 강의를 듣기 시작했다.가끔 유니티 작업을 하며 c첫 주에는 '빗방울 받는 르탄이' 게임을 만들었다.처음으, date=2일 전, comment=0, like=0, img=https://velog.velcdn.com/images/yeram2546/post/422e7365-4eee-404a-aee0-ecc4b90e6c7e/image.jpg, tag=[사운드, 사운드디자이너, 유니티, 코딩], url=/@yeram2546/스파르타코딩클럽1주차), TagPostDto(name=duroomi, title=Today I learned (221115) - 11, summary=아래와 같은 형식으로 쓴다.아래와 같은 형식으로 쓴다.아래와 같은 형식으로 쓴다.참고로 아래 코드처럼 elif는 여러 개 쓸 수 있다.결과로 '버스를 타자!'가 출력된다.리스트에서 아래와 같이 for문이 활용 될 수 있다.결과로 사과, 배, 감, 수박, 딸기가 차례대로, date=2일 전, comment=2, like=0, img=, tag=[개발자, 국비지원, 내일배움캠프, 반복문, 스파르타코딩클럽, 조건문, 초보, 코딩, 파이썬], url=/@duroomi/Today-I-learned-221115-11), TagPostDto(name=son950610, title=Weekly I Learned 11, summary=WIL 11, date=3일 전, comment=0, like=0, img=, tag=[WIL, 주간일지, 코딩], url=/@son950610/Weekly-I-Learned-11), TagPostDto(name=milnil, title=2022.11.14 TIL, summary=9:00 - 9:50성경 읽기 출37-출4010:00 - 10:50쉽게 배우는 알고리즘 3-5 스택Stack스택은 맨 앞(self.head)에서 들어오고 나감, LIFO(Last In First Out)pythong에서는 push 기능으로 append, pop 기능으로, date=3일 전, comment=0, like=0, img=, tag=[공부, 매일, 스파르타코딩클럽, 코딩], url=/@milnil/2022.11.14-TIL), TagPostDto(name=bokimy, title=[Java] Annotation 애너테이션, summary=Annotation : &quot;주석&quot;comment : &quot;주석&quot;차이는 정보를 전달하는 대상이 누구(무엇)인가에 있다.comment vs annotation주요 역할1) 컴파일에게 문법 에러 체크하도록 정보 전달2) 프로그램 빌드 시 코드를 자동으로 생성할 수 있도록 정보 제공, date=3일 전, comment=0, like=0, img=https://velog.velcdn.com/images/bokimy/post/480e86a9-4a5b-4766-a0bc-377e83c209d5/image.png, tag=[Java, annotation, 코딩], url=/@bokimy/Java-Annotation-애너테이션), TagPostDto(name=duroomi, title=Today I learned (221114) - 10, summary=위 코드처럼 'len(문자열을 담은 변수명)'을 출력하면 된다. 결과는 11.만약 앞에서부터 3글자만 출력하고 싶으면위 코드처럼 '변수명:원하는 만큼의 길이'를 출력하면 되고 결과는 abc이다.만약 앞에서부터 정한 길이만큼을 뺀 나머지 문자열을 출력하고 싶으면위 코드처, date=3일 전, comment=1, like=0, img=, tag=[개발자, 국비지원, 내일배움캠프, 딕셔너리, 리스트, 문자열, 스파르타코딩클럽, 초보, 코딩, 파이썬], url=/@duroomi/Today-I-learned-221114-10), TagPostDto(name=9809king, title=[내일배움단] 웹개발 종합반 - 4주차, summary=ㄴㅇㄹ, date=4일 전, comment=0, like=0, img=https://velog.velcdn.com/images/9809king/post/e0b652c8-44b5-48c0-885a-4a699d0672a1/image.png, tag=[내일배움단, 스파르타, 웹개발, 코딩], url=/@9809king/내일배움단-웹개발-종합반-4주차), TagPostDto(name=ssk04294, title=[SQL] 개발일지 2주차, summary=? 통계 : 최대 / 최소 / 평균 / 개수데이터 분석의 목적: 쌓여있는 날것의 데이터 -&gt; 의미를 갖는 '정보'로의 변환즉, 데이터베이스 테이블에 저장된 날것의 데이터에서 가장 많이 Like를 받은 사람의 이름, 전체 신청자수, 평균 연령 등의 의미있는 '정보'를, date=5일 전, comment=0, like=0, img=https://velog.velcdn.com/images/ssk04294/post/c106c971-6927-42c2-afdb-8f9a4744ecf2/image.png, tag=[sql, 코딩], url=/@ssk04294/SQL-개발일지-2주차), TagPostDto(name=bokimy, title=[Java]제네릭 사용법, summary=제네릭(Generic) 클래스나 메서드의 코드를 작성할 때, 타입을 정해두는 것이 아니라 추후에 지정할 수 있도록 일반화해두는 것. = 작성한 클래스나 메서드의 코드가 특정 데이터 타입에 얽매이지 않도록 해둔 것. WHY? 배열 사용한 코드 with 제네릭 E, date=5일 전, comment=0, like=0, img=, tag=[Java, 제네릭, 코딩], url=/@bokimy/Java제네릭-사용법), TagPostDto(name=duroomi, title=Today I learned (221111) - 9, summary=앞에서 데이터 타입 - number, string, null, undefined 등에 대해서 배웠다.이 데이터 타입들 중에 객체 타입이라는 것이 있다. 객체 타입을 이해하기 위해서 다음과 같이 생각해보자. 무수히 많은 '인간'이 있다. 이 인간들 중에서 쌍둥이 외에는, date=6일 전, comment=0, like=0, img=, tag=[cpu, 개발자, 객체, 국비지원, 내일배움캠프, 배열, 스파르타코딩클럽, 자바스크립트, 초보, 코딩, 클래스], url=/@duroomi/Today-I-learned-221111-9), TagPostDto(name=gyulari, title=RPG Lv. 8 - 공정성, summary=&quot;아니 왜 블럭 하나가 안나오냐고!!!&quot; 테트리스는 왜 필요한 블럭이 안 나올까? 게임이 나를 차별하나? 오늘 알아볼 내용은 &quot;공정성&quot;이다!, date=2022년 9월 30일, comment=0, like=2, img=https://velog.velcdn.com/images/gyulari/post/148ad7e1-d695-494b-ba0c-505448d945c7/image.png, tag=[게임 기획, 게임, 게임 디자인], url=/@gyulari/RPG-Lv.-8-공정성), TagPostDto(name=zizonaaa15, title=총판모집합니다., summary=마그마 게임, date=2022년 9월 30일, comment=0, like=0, img=https://velog.velcdn.com/images/zizonaaa15/post/27e4e12d-3ced-4a10-a669-7dea0f48939f/image.jpg, tag=[게임, 마그마], url=/@zizonaaa15/마그마-게임), TagPostDto(name=gyulari, title=RPG Lv. 9 - 가드너의 다중 지능, summary=게임도 똑똑해야 할 수 있다! 그런데 지능은 사실 다중 지능으로 나누어져 있다고? 오늘은 &quot;가드너의 다중 지능&quot;에 대해 알아본다!, date=2022년 10월 1일, comment=0, like=2, img=https://velog.velcdn.com/images/gyulari/post/9101e85a-3ea9-4333-a977-42c7dc109c18/image.png, tag=[게임 기획, 게임, 게임 디자인], url=/@gyulari/RPG-Lv.-9-가드너의-다중-지능), TagPostDto(name=gyulari, title=RPG Lv. 10 - 스키너의 상자, summary=&quot;찍찍, 밥 줘.&quot; 과연 플레이어들은 &quot;상자 속에 든 쥐&quot;일까? 오늘은 &quot;스키너의 상자&quot;와 함께 보상과 플레이 유도에 대해 알아본다!, date=2022년 10월 2일, comment=0, like=2, img=https://velog.velcdn.com/images/gyulari/post/632372db-f8cb-46c8-bb41-165411e4455c/image.png, tag=[게임 기획, 게임, 게임 디자인], url=/@gyulari/RPG-Lv.-10-스키너의-상자), TagPostDto(name=gyulari, title=RPG Lv. 11 - 80:20 법칙, summary=&quot;아니 이런 거 패치할 시간에 스킬 버그 좀 고치라고!&quot; 왜 일을 열심히 하고도 욕을 먹는 걸까? 오늘은 80:20 법칙에 대해 알아본다!, date=2022년 10월 3일, comment=0, like=2, img=https://velog.velcdn.com/images/gyulari/post/615e4d81-9286-4496-bc7d-a88f41195a6f/image.png, tag=[게임 기획, 게임, 게임 디자인], url=/@gyulari/RPG-Lv.-11-80대20-법칙), TagPostDto(name=gyulari, title=RPG Lv. 12 - 소비자 잉여, summary=&quot;부분 유료화 모델은 왜 매력적인 수익 모델일까?&quot; 오늘은 게임의 부분 유료화 모델에 대해서 &quot;소비자 잉여&quot; 개념을 통해 이야기해본다!, date=2022년 10월 5일, comment=2, like=2, img=https://velog.velcdn.com/images/gyulari/post/0cd264b1-18dd-4f4c-906b-272c71b5da5b/image.png, tag=[게임 기획, 게임, 게임 디자인], url=/@gyulari/RPG-Lv.-12-소비자-잉여), TagPostDto(name=gyulari, title=RPG Lv. 13 - 공유지의 비극, summary=&quot;아무튼 내 탓은 아닌 듯&quot; 안 그래도 부족한 자원을 모두가 덮어놓고 막 쓰면 어떻게 될까? 오늘의 이야기는 &quot;공유지의 비극&quot;이다!, date=2022년 10월 6일, comment=0, like=2, img=https://velog.velcdn.com/images/gyulari/post/ee5d9515-bc5c-4c77-a4a7-7ad25e8533ee/image.png, tag=[게임 기획, 게임, 게임 디자인], url=/@gyulari/RPG-Lv.-13-공유지의-비극), TagPostDto(name=gyulari, title=RPG Lv. 14 - 배경 스토리텔링, summary=&quot;태초에 빛이 있었으니...&quot; 너무 길고 많은 세계관 설명은 플레이어를 지루하게 만든다! 오늘 알아볼 것은 &quot;배경 스토리텔링&quot;이다!, date=2022년 10월 7일, comment=0, like=2, img=https://velog.velcdn.com/images/gyulari/post/ced1d1cb-8321-4cd9-be69-e8fcf788b34b/image.png, tag=[게임 기획, 게임, 게임 디자인], url=/@gyulari/RPG-Lv.-14-배경-스토리텔링), TagPostDto(name=zizonaaa44, title=카드게임(총판)페이지 분양해드립니다., summary=, date=2022년 10월 7일, comment=0, like=1, img=https://velog.velcdn.com/images/zizonaaa44/post/507aa677-5234-46c7-a673-c6fcda24d737/image.jpg, tag=[game5866, 게임, 넷마블게임, 딸기게임, 마그마, 맞고, 매그넘, 모바일게임, 비타민게임, 어른게임, 유저환영, 챔피언게임, 카톡 친추, 포커, 홀덤], url=/@zizonaaa44/카드게임총판페이지-분양해드립니다), TagPostDto(name=gyulari, title=RPG Lv. 15 - 자원봉사자의 딜레마, summary=&quot;나 하나쯤이야 ㅎㅎ&quot; 팀원이 대신 해 줄 것이라는 낙관적인 생각이 팀을 패배로 이끈다! 오늘의 주제는 &quot;자원봉사자의 딜레마&quot;이다!, date=2022년 10월 9일, comment=0, like=3, img=https://velog.velcdn.com/images/gyulari/post/35b69140-ae0c-433f-b96e-c8019c2af563/image.png, tag=[게임 기획, 게임, 게임 디자인], url=/@gyulari/RPG-Lv.-15-자원봉사자의-딜레마), TagPostDto(name=gkswh4860, title=타입 객체 패턴 (게임 프로그래밍 패턴 13장), summary=수백개의 몬스터를 상속이 아니라 데이터로 구현해 봅시다., date=2022년 10월 9일, comment=0, like=1, img=https://velog.velcdn.com/images/gkswh4860/post/0f1a2f86-98b4-4eaf-b22b-0f65da081ac1/image.png, tag=[게임, 디자인패턴, 유니티], url=/@gkswh4860/타입-객체-패턴-게임-프로그래밍-패턴-13장), TagPostDto(name=rudco219, title=22.10.11, summary=헤헤 이로치 전설 잡아따~드뎌 퇴근 후 공부하러 나왔다!아자 오늘도 꼭 수확을 해가자!, date=2022년 10월 11일, comment=0, like=0, img=https://velog.velcdn.com/images/rudco219/post/2ead9fbd-ba2b-4ca0-b218-f42a96682bc6/image.png, tag=[게임, 공부, 방통대, 포켓몬고], url=/@rudco219/22.10.11), TagPostDto(name=575zizon, title=무사고 100% 안전 게임, summary=안전한곳에 안전하고 좋게 게임들하세요^^업로드중.., date=2022년 10월 18일, comment=0, like=0, img=https://velog.velcdn.com/images/575zizon/post/564e5f0d-512c-43ce-b7f0-a3fad9cbf8e4/image.jpg, tag=[게임, 챔피언게임, 챔피언게임고스톱, 챔피언게임바둑이, 챔피언게임슬롯, 챔피언게임홀덤], url=/@575zizon/무사고-100-안전-게임), TagPostDto(name=575zizon, title=즐거운 하루보내세요, summary=언제어디서든 누구든 쉽게 게임할수있는곳입니다^^업로드중.., date=2022년 10월 18일, comment=0, like=0, img=https://velog.velcdn.com/images/575zizon/post/57da314d-6b12-4973-bc9b-77a6d2600d35/image.jpg, tag=[게임, 딸기게임, 마그마게임, 챔피언게임, 총판], url=/@575zizon/즐거운-하루보내세요), TagPostDto(name=g1rmmr, title=Game Mathematics_Chapter 1. &quot;Vector&quot;, summary=Intro &gt;Game development에서 기본 지식(linear algebra, affine, physics) 없이 3D 빌드를 시작하면 많은 난관에 부딫힐 것입니다. 특히 Graphics API를 다룰 때 말이죠! 해당 post는 스스로의 기본을 다시 다지기, date=2022년 10월 23일, comment=0, like=0, img=https://velog.velcdn.com/images/g1rmmr/post/24b16a50-b440-4bc1-aed5-5881ec0e547d/image.jpg, tag=[Mathematics, game, vector, 게임, 벡터, 수학], url=/@g1rmmr/Game-MathematicsChapter-1.-Vector), TagPostDto(name=beheadway, title=프로젝트 매니저, summary=프리랜서로 계약금이 들어오고 동생의 컴퓨터를 맞춰주었다.꽤 출혈이 컷지만 동생이 워낙에 컴퓨터를 배우고 싶어했고 그래픽카드의 가격도 워낙싼 상황이여서 컴퓨터를 3070으로 맞춰 게임개발이나 다른 일에도 쓸수있게 했다.유튜브 알고리즘으로 리그매니저 2022를 봤고 예전에, date=2022년 10월 26일, comment=0, like=0, img=, tag=[게임], url=/@beheadway/프로젝트-매니저), TagPostDto(name=fltk1004, title=C언어로 공룡게임 만들기, summary=대학교 객체지향프로그래밍 교과목 중간고사로 C언어로 공룡게임을 만들었다.기본코드를 주고 그외 기능들을 추가하는 식으로 진행되었는데기본코드는 공룡이 뛰면서 장애물을 점프하고 score와 x축,y축이 표시되며 죽으면 gameover창을 띄우는 것이다.나는 기본코드에다 li, date=2022년 10월 29일, comment=0, like=1, img=https://velog.velcdn.com/images/fltk1004/post/e835acea-e9ff-4a8b-99ec-a06e28606d51/image.png, tag=[C, c언어, 게임, 공룡게임], url=/@fltk1004/C언어로-공룡게임-만들기), TagPostDto(name=colorfulapple, title=2022-11-07 개발일지, summary=개발 진행 및 완료사항 개발 중 발생한 이슈, 고민, 이를 해결한 내용 새로 배운 내용 참고 레퍼런스 특이사항 (아이디어, 메모 등) 회고 To-Do List, date=2022년 11월 6일, comment=0, like=0, img=https://velog.velcdn.com/images/colorfulapple/post/2e505fc4-5031-4ff8-9731-b38ccee7c582/image.png, tag=[게임, 유니티], url=/@colorfulapple/2022-11-07-개발일지), TagPostDto(name=colorfulapple, title=2020-11-06 개발일지, summary=Unity를 다운하고, 기본 설치 파일을 설치하고, 인터페이스를 학습하였습니다. 상속의 개념을 학습하였습니다., date=2022년 11월 6일, comment=0, like=0, img=https://velog.velcdn.com/images/colorfulapple/post/196a24ab-0a28-4d91-80f3-9167356634e4/image.png, tag=[게임, 유니티], url=/@colorfulapple/20201106-개발일지), TagPostDto(name=colorfulapple, title=2022-11-09 개발일지, summary=게임 오브젝트에 스크립트를 추가하고, 실행하고, 수정하는 활동을 하였습니다.C3., date=2022년 11월 9일, comment=0, like=0, img=, tag=[게임, 유니티], url=/@colorfulapple/2022-11-09-개발일지)])
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.5</a> at 2022. 11. 17. 오후 2:39:46</p>
+</div>
+</div>
+</body>
+</html>

@@ -87,9 +87,11 @@ public class SubscribeServiceImpl implements SubscribeService {
 
         List<SubscribePostDto> subscribePostDtos = new ArrayList<>();
 
-        Elements posts = doc.select("#root > div.sc-efQSVx.sc-cTAqQK.hKuDqm > div.sc-hiwPVj.cFguvd.sc-dkqQuH > div > div.sc-gGPzkF.idFviV > div.sc-kmQMED > div.sc-gslxeA.leuZzQ");
+        Elements posts = doc.select("#root > div > div > div > div > div").get(6).select("> div");
+        System.out.println(posts);
 
         for (Element post : posts) {
+
             SubscribePostDto subscribePostDto = new SubscribePostDto();
 
             subscribePostDto.setName(subscriber);
@@ -99,8 +101,9 @@ public class SubscribeServiceImpl implements SubscribeService {
             subscribePostDto.setComment(Integer.parseInt(post.select(".subinfo span").get(1).text().replace("개의 댓글", "")));
             subscribePostDto.setLike(Integer.parseInt(post.select(".subinfo span").get(2).text()));
             subscribePostDto.setImg(post.select("a div img").attr("src"));
+            subscribePostDto.setUrl(post.select("> a").attr("href"));
 
-            Elements tags = post.select(".tags-wrapper .sc-TBWPX.fOVlQW");
+            Elements tags = post.select(".tags-wrapper a");
             for (Element tag : tags) {
                 subscribePostDto.getTag().add(tag.text());
             }

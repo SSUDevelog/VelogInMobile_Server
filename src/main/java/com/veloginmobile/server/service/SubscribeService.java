@@ -12,9 +12,9 @@ public interface SubscribeService {
 
     List<SubscribePostDto> getSubscriberPosts(String subscriber) throws IOException;
 
-    SubscriberPostResultDto getSubscribersPost(String userName) throws IOException;
-
     SubscriberPostResultDto getSubscribersPost(List<String> subscribers) throws IOException;
+
+    SubscriberPostResultDto getSubscribersPost(String uid) throws IOException;
 
     void addSubscribe(String uid, String subscriber);
 
