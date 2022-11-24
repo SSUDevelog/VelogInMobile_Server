@@ -1,6 +1,8 @@
 package com.veloginmobile.server.crawler;
 
+import com.veloginmobile.server.data.entity.Crawling;
 import com.veloginmobile.server.data.entity.Subscribe;
+import com.veloginmobile.server.data.repository.CrawlingRepository;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -15,42 +17,28 @@ import java.util.List;
 
 public class NewPostCrawler {
 
-    @PersistenceUnit
-    EntityManagerFactory factory;
-    EntityManager em;
+    CrawlingRepository crawlingRepository;
 
-    public NewPostCrawler() {
-        this.factory = Persistence.createEntityManagerFactory("name");
-        this.em = factory.createEntityManager();
-    }
-
-    public void searchNewPost() {
+    public void searchNewPost() throws IOException {
         while (Boolean.TRUE){
-            Subscribe subscribe = new Subscribe();
-            Subscribe findSubscribe = em.find(Subscribe.class, subscribe.getId());
-            List<String> allSubscribers = findSubscribe.getSubscribers();
+            List<Crawling> allSubscribers = crawlingRepository.findAll();
 
-            for(String subscriber : allSubscribers) {
+            for(Crawling subscriber : allSubscribers) {
 
+                String velogUser = subscriber.getVelogUserName();
                 NewPostDto newPostDto = new NewPostDto();
 
-                try {
-                    String userProfileURL = "https://velog.io/@" + subscriber;
-                    Document doc = Jsoup.connect(userProfileURL).get();
+                String userProfileURL = "https://velog.io/@" + velogUser;
+                Document doc = Jsoup.connect(userProfileURL).get();
 
-                    Elements posts = doc.select(".subinfo span");
-                    String writeTime = posts.first().text();
-                    System.out.println(writeTime);
+                Elements posts = doc.select(".subinfo span");
+                String writeTime = posts.first().text();
+                System.out.println(writeTime);
 
-                    if (writeTime.equals("1분 전") || writeTime.equals("2분 전")) {
-                        newPostDto.newPostAuthor.add(subscriber);
-                        System.out.println(newPostDto);
-                    }
-
-                } catch (IOException e) {
-                    return;
+                if (writeTime.equals("1분 전") || writeTime.equals("2분전")) {
+                    newPostDto.newPostAuthor.add(velogUser);
+                    System.out.println(newPostDto);
                 }
-
             }
             try {
                 Thread.sleep(30000);
