@@ -13,15 +13,16 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Table
-public class Crawling {
+public class Target {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(name = "velog_user_name")
     private String velogUserName;
 
-    @ElementCollection
-    private List<String> userList = new ArrayList<>();
+    @OneToMany(mappedBy = "target")
+    private List<Subscribe> subscribes = new ArrayList<>();
 
 }

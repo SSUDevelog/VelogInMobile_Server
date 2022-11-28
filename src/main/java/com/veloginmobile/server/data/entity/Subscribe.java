@@ -3,8 +3,6 @@ package com.veloginmobile.server.data.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
@@ -19,11 +17,12 @@ public class Subscribe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "uid")
     private User user;
 
-    @ElementCollection
-    private List<String> subscribers = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "velog_user_name")
+    private Target target;
 
 }

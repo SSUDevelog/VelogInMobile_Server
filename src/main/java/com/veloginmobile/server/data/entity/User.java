@@ -23,7 +23,7 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, name = "uid")
     private String uid;
 
     @Column(nullable = false)
@@ -31,6 +31,9 @@ public class User implements UserDetails {
 
     @Column(nullable = false)
     private String name;
+
+    @OneToMany(mappedBy = "user")
+    private List<Subscribe> subscribes = new ArrayList<>();
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles = new ArrayList<>();
