@@ -25,6 +25,6 @@ public class SignUpDto {
     @NotBlank
     private String name;
 
-    @ApiParam(value = "권한", required = true)
+    @ApiParam(value = "권한", required = false)
     private String role;
 }

@@ -1,5 +1,6 @@
 package com.veloginmobile.server.service.impl;
 
+import com.veloginmobile.server.common.exception.TagException;
 import com.veloginmobile.server.data.dto.tag.TagPostDto;
 import com.veloginmobile.server.data.dto.tag.TagPostResultDto;
 import com.veloginmobile.server.data.entity.Tag;
@@ -12,6 +13,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -32,7 +34,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public List<TagPostDto> getTagPosts(String tag) throws IOException {
+    public List<TagPostDto> getTagPosts(String tag) throws IOException, TagException {
 
         String userProfileURL = "https://velog.io/tags/" + tag;
         Document doc = Jsoup.connect(userProfileURL).get();
@@ -42,17 +44,7 @@ public class TagServiceImpl implements TagService {
         Elements posts = doc.select("#root > div > main > div > div").get(1).select("> div");
 
         for (Element post : posts) {
-
-            TagPostDto tagPostDto = new TagPostDto();
-
-            tagPostDto.setName(post.select(".user-info .username a").text());
-            tagPostDto.setTitle(post.select("a h2").text());
-            tagPostDto.setSummary(post.select("p").text());
-            tagPostDto.setDate(post.select(".subinfo span").get(0).text());
-            tagPostDto.setComment(Integer.parseInt(post.select(".subinfo span").get(1).text().replace("개의 댓글", "")));
-            tagPostDto.setLike(Integer.parseInt(post.select(".subinfo span").get(2).text()));
-            tagPostDto.setImg(post.select("a div img").attr("src"));
-            tagPostDto.setUrl(post.select("> a").attr("href"));
+            TagPostDto tagPostDto = tagPostFactory(post);
 
             Elements tags = post.select(".tags-wrapper a");
             for (Element _tag : tags) {
@@ -61,16 +53,32 @@ public class TagServiceImpl implements TagService {
 
             subscribePostDtos.add(tagPostDto);
         }
+        if(subscribePostDtos == null){
+            throw new TagException(HttpStatus.ACCEPTED, "불러올 포스트가 없습니다.");
+        }
 
         return subscribePostDtos;
     }
 
+    private static TagPostDto tagPostFactory(Element post) {
+        TagPostDto tagPostDto = new TagPostDto();
+
+        tagPostDto.setName(post.select(".user-info .username a").text());
+        tagPostDto.setTitle(post.select("a h2").text());
+        tagPostDto.setSummary(post.select("p").text());
+        tagPostDto.setDate(post.select(".subinfo span").get(0).text());
+        tagPostDto.setComment(Integer.parseInt(post.select(".subinfo span").get(1).text().replace("개의 댓글", "")));
+        tagPostDto.setLike(Integer.parseInt(post.select(".subinfo span").get(2).text()));
+        tagPostDto.setImg(post.select("a div img").attr("src"));
+        tagPostDto.setUrl(post.select("> a").attr("href"));
+        return tagPostDto;
+    }
+
     @Override
-    public TagPostResultDto getTagsPost(List<String> tags) throws IOException {
+    public TagPostResultDto getTagsPost(List<String> tags) throws IOException, TagException {
 
         TagPostResultDto tagPostResultDto = new TagPostResultDto();
-
-        for(String tag : tags) {
+        for (String tag : tags) {
             List<TagPostDto> tagPostDtos = getTagPosts(tag);
             tagPostResultDto.getTagPostDtoList().addAll(tagPostDtos);
         }
@@ -80,7 +88,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public TagPostResultDto getTagsPost(String uid) throws IOException {
+    public TagPostResultDto getTagsPost(String uid) throws IOException, TagException {
         User user = userRepository.getByUid(uid);
         Tag tag = tagRepository.findByUser(user);
         List<String> tags = tag.getTags();
@@ -89,12 +97,15 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public void addTag(String uid, String tag) {
+    public void addTag(String uid, String tag) throws TagException {
 
         User user = userRepository.getByUid(uid);
         Tag tags = tagRepository.findByUser(user);
         if (tags == null) {
             tags = makeTag(user);
+        }
+        if(tags.getTags().contains(tag)){
+            throw new TagException(HttpStatus.BAD_REQUEST, "이미 추가한 관심태그입니다.");
         }
 
         tags.getTags().add(tag);

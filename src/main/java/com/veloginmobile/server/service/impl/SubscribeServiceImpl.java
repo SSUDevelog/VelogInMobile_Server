@@ -1,5 +1,6 @@
 package com.veloginmobile.server.service.impl;
 
+import com.veloginmobile.server.common.exception.SubscribeException;
 import com.veloginmobile.server.data.dto.subscribe.SubscribePostDto;
 import com.veloginmobile.server.data.dto.subscribe.SubscribeRequestDto;
 import com.veloginmobile.server.data.dto.subscribe.SubscriberPostResultDto;
@@ -13,6 +14,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -36,7 +38,7 @@ public class SubscribeServiceImpl implements SubscribeService {
     }
 
 
-    public SubscriberPostResultDto getSubscribersPost(String uid) throws IOException {//밖에서 유저 객체를 받아야함.
+    public SubscriberPostResultDto getSubscribersPost(String uid) throws IOException, SubscribeException {
         User user = userRepository.getByUid(uid);//밖으로 빼야함.
         Subscribe subscribe = subscribeRepository.findByUser(user);
         List<String> subscribers = subscribe.getSubscribers();
@@ -44,7 +46,7 @@ public class SubscribeServiceImpl implements SubscribeService {
         return getSubscribersPost(subscribers);
     }
 
-    public SubscriberPostResultDto getSubscribersPost(List<String> subscribers) throws IOException {
+    public SubscriberPostResultDto getSubscribersPost(List<String> subscribers) throws IOException, SubscribeException {
 
         SubscriberPostResultDto subscriberPostResultDto = new SubscriberPostResultDto();
 
@@ -53,13 +55,15 @@ public class SubscribeServiceImpl implements SubscribeService {
             subscriberPostResultDto.getSubscribePostDtoList().addAll(subscribePostDtos);
         }
         Collections.sort(subscriberPostResultDto.getSubscribePostDtoList(), SubscribePostDto.compareByDate);
+        if(subscriberPostResultDto.getSubscribePostDtoList() == null){
+            throw new SubscribeException(HttpStatus.ACCEPTED, "불러올 포스트가 없습니다.");
+        }
 
         return subscriberPostResultDto;
     }
 
-
     //반환형 나중에 성공여부 DTO로 바꾸기
-    public void addSubscribe(String uid, String subscriber) {
+    public void addSubscribe(String uid, String subscriber) throws SubscribeException {
 
         User user = userRepository.getByUid(uid);
         Subscribe subscribe = subscribeRepository.findByUser(user);
@@ -67,11 +71,15 @@ public class SubscribeServiceImpl implements SubscribeService {
             subscribe = makeSubscribe(user);
         }
 
+        if(subscribe.getSubscribers().contains(subscriber)){
+            throw new SubscribeException(HttpStatus.BAD_REQUEST, "이미 추가한 구독대상입니다.");
+        }
+
         subscribe.getSubscribers().add(subscriber);
         subscribeRepository.save(subscribe);
     }
 
-    public List<String> getSubscribers(String userName) {
+    public List<String> getSubscribers(String userName){
 
         User user = userRepository.getByUid(userName);
         Subscribe subscribe = subscribeRepository.findByUser(user);

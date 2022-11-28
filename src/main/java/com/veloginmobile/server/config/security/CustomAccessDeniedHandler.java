@@ -1,7 +1,11 @@
 package com.veloginmobile.server.config.security;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.veloginmobile.server.data.dto.AccessDeniedResponse;
+import com.veloginmobile.server.data.dto.EntryPointErrorResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;
@@ -17,7 +21,15 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException exception) throws IOException {
-        LOGGER.info("[handle] 접근이 막혔을 경우 경로 리다이렉트");
-        response.sendRedirect("/sign-api/exception");
+        ObjectMapper objectMapper = new ObjectMapper();
+        LOGGER.info("[commence] 인가 실패로 response.sendError 발생");
+
+        AccessDeniedResponse accessDeniedResponse = new AccessDeniedResponse();
+        accessDeniedResponse.setMsg("권한이 없습니다.");
+
+        response.setStatus(HttpStatus.FORBIDDEN.value());
+        response.setContentType("application/json");
+        response.setCharacterEncoding("utf-8");
+        response.getWriter().write(objectMapper.writeValueAsString(accessDeniedResponse));
     }
 }

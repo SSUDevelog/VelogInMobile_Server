@@ -1,5 +1,6 @@
 package com.veloginmobile.server.controller;
 
+import com.veloginmobile.server.common.exception.TagException;
 import com.veloginmobile.server.config.security.JwtTokenProvider;
 import com.veloginmobile.server.data.dto.tag.TagPostResultDto;
 import com.veloginmobile.server.service.TagService;
@@ -32,29 +33,29 @@ public class TagController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 발급 받은 access_token", required = true, dataType = "String", paramType = "header")})
     @GetMapping(value = "/gettag")
-    public ResponseEntity<List<String>> getTag(@RequestHeader("X-AUTH-TOKEN") String token) {//제네릭 안의 제네릭 -> 별도응답 객체를 만들어야함!
+    public ResponseEntity<List<String>> getTag(@RequestHeader("X-AUTH-TOKEN") String token) throws TagException {//제네릭 안의 제네릭 -> 별도응답 객체를 만들어야함!
         String userName = jwtTokenProvider.getUsername(token);
 
         List<String> tags = tagService.getTags(userName);
 
-        return ResponseEntity.status(HttpStatus.OK).body(tags);//임시
+        return ResponseEntity.status(HttpStatus.OK).body(tags);
     }
 
     @ApiImplicitParams({
             @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 발급 받은 access_token", required = true, dataType = "String", paramType = "header")})
     @PostMapping(value = "/addtag")
-    public ResponseEntity<String> addTag(@RequestHeader("X-AUTH-TOKEN") String token, @RequestParam String tag) {
+    public ResponseEntity<String> addTag(@RequestHeader("X-AUTH-TOKEN") String token, @RequestParam String tag) throws TagException {
         String userName = jwtTokenProvider.getUsername(token);
 
         tagService.addTag(userName, tag);
 
-        return ResponseEntity.status(HttpStatus.OK).body("Temp");//임시
+        return ResponseEntity.status(HttpStatus.OK).body("Success");
     }
 
     @ApiImplicitParams({
             @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 발급 받은 access_token", required = true, dataType = "String", paramType = "header")})
     @GetMapping(value = "/tagpost")//responseentity가 없어도 되는지 테스트 되는지 확인해보기//403 402같은 코드를 던질경우 쓰기
-    public ResponseEntity<TagPostResultDto> getTagPost(@RequestHeader("X-AUTH-TOKEN") String token) throws IOException {
+    public ResponseEntity<TagPostResultDto> getTagPost(@RequestHeader("X-AUTH-TOKEN") String token) throws IOException, TagException {
         String userName = jwtTokenProvider.getUsername(token);
 
         TagPostResultDto tagPostResultDto = tagService.getTagsPost(userName);

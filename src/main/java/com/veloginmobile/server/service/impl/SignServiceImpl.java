@@ -1,6 +1,7 @@
 package com.veloginmobile.server.service.impl;
 
 import com.veloginmobile.server.common.CommonResponse;
+import com.veloginmobile.server.common.exception.SignException;
 import com.veloginmobile.server.config.security.JwtTokenProvider;
 import com.veloginmobile.server.data.dto.sign.SignInDto;
 import com.veloginmobile.server.data.dto.sign.SignInResultDto;
@@ -11,7 +12,7 @@ import com.veloginmobile.server.data.repository.UserRepository;
 import com.veloginmobile.server.service.SignService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +34,7 @@ public class SignServiceImpl implements SignService {
     }
 
     @Override
-    public SignUpResultDto signUp(SignUpDto signUpDto) {
+    public SignUpResultDto signUp(SignUpDto signUpDto) throws SignException{
         LOGGER.info("[getSignUpResult] 회원 가입 정보 전달");
         User user;
         if(signUpDto.getRole().equalsIgnoreCase("admin")) {
@@ -62,20 +63,21 @@ public class SignServiceImpl implements SignService {
         } else {
             LOGGER.info("[getSignUpResult] 실패 처리 완료");
             setFailResult(signUpResultDto);
+            throw new SignException(HttpStatus.BAD_REQUEST, "중복된 아이디입니다.");
         }
 
         return signUpResultDto;
     }
 
     @Override
-    public SignInResultDto signIn(SignInDto signInDto) throws RuntimeException {
+    public SignInResultDto signIn(SignInDto signInDto) throws SignException {
         LOGGER.info("[getSignInResult] signDataHandler로 회원 정보 요청");
         User user = userRepository.getByUid(signInDto.getId());
         LOGGER.info("[getSignInResult] Id : {}", signInDto.getId());
 
         LOGGER.info("[getSignInResult] 패스워드 비교 수행");
         if(!passwordEncoder.matches(signInDto.getPassword(), user.getPassword())) {//각 익셉션에 대한 클래스 정리, 분류 필요
-            throw new RuntimeException();
+            throw new SignException(HttpStatus.BAD_REQUEST, "아이디가 존재하지 않거나 비밀번호가 일치하지 않습니다.");
         }
         LOGGER.info("[getSignInResult] 패스워드 일치");
 
