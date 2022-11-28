@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.veloginmobile.server.data.dto.EntryPointErrorResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
@@ -26,7 +27,7 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
         EntryPointErrorResponse entryPointErrorResponse = new EntryPointErrorResponse();
         entryPointErrorResponse.setMsg("인증이 실패하였습니다.");
 
-        response.setStatus(401);
+        response.setStatus(HttpStatus.UNAUTHORIZED.value());
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
         response.getWriter().write(objectMapper.writeValueAsString(entryPointErrorResponse));

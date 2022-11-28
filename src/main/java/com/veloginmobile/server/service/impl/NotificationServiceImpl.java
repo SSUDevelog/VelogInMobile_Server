@@ -68,7 +68,7 @@ public class NotificationServiceImpl implements NotificationService {
     }
 
     @Override
-    public void sendByGroupName(String groupName, NotificationDto notificationDto){
+    public List<String> sendByGroupName(String groupName, NotificationDto notificationDto) throws FirebaseMessagingException{
         List<String> tokenList = notificationRepository.getByGroupName(groupName).getReceivers();
 
         List<Message> messages = tokenList.stream().map(token -> Message.builder()
@@ -77,22 +77,20 @@ public class NotificationServiceImpl implements NotificationService {
                 .setToken(token)
                 .build()).collect(Collectors.toList());
 
-        try {
-            BatchResponse response = FirebaseMessaging.getInstance().sendAll(messages);
+        BatchResponse response = FirebaseMessaging.getInstance().sendAll(messages);
+        List<String> failedTokens = new ArrayList<>();
 
-            if(response.getFailureCount() > 0) {
-                List<SendResponse> responses = response.getResponses();
-                List<String> failedTokens = new ArrayList<>();
+        if(response.getFailureCount() > 0) {
+            List<SendResponse> responses = response.getResponses();
 
-                for(int i=0; i< responses.size(); i++) {
-                    if(!responses.get(i).isSuccessful()){
-                        failedTokens.add(tokenList.get(i));
-                    }
+            for(int i=0; i< responses.size(); i++) {
+                if(!responses.get(i).isSuccessful()){
+                    failedTokens.add(tokenList.get(i));
                 }
-                LOGGER.error("List of tokens are not valid FCM token : " + failedTokens);
             }
-        } catch (FirebaseMessagingException e) {
-            LOGGER.error("cannot send to memberList push message. error info : {}", e.getMessage());
+            LOGGER.error("List of tokens are not valid FCM token : " + failedTokens);
         }
+
+        return failedTokens;
     }
 }

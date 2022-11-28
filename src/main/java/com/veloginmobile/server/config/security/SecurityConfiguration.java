@@ -31,10 +31,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .and()
                 .authorizeRequests()
-                .antMatchers("/sign-api/sign-in", "/sign-api/sign-up", "sign-api/exception").permitAll()
-                .antMatchers(HttpMethod.GET, "/test-api/**").permitAll()
 
-                .antMatchers("**exception**").permitAll()
+                .antMatchers("/launch/version", "/sign-api/sign-in", "/sign-api/sign-up").permitAll()
+
+                .antMatchers("/subscribe/**", "/tag/**").hasAnyRole("ADMIN", "USER")
+
+                .antMatchers("/notification/**").hasRole("ADMIN")
 
                 .anyRequest().hasRole("ADMIN")
 
@@ -49,6 +51,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity webSecurity) {
-        webSecurity.ignoring().antMatchers("/v2/api-docs", "/swagger-resources/**", "/swagger-ui.html", "/webjars/**", "/swagger/**", "/sign-api/exception");
+        webSecurity.ignoring().antMatchers("/v2/api-docs", "/swagger-resources/**", "/swagger-ui.html", "/webjars/**", "/swagger/**");
     }
 }
