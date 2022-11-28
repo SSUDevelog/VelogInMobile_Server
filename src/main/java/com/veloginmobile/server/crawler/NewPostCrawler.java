@@ -1,7 +1,6 @@
 package com.veloginmobile.server.crawler;
 
-import com.veloginmobile.server.data.entity.Crawling;
-import com.veloginmobile.server.data.entity.Subscribe;
+import com.veloginmobile.server.data.entity.Target;
 import com.veloginmobile.server.data.repository.CrawlingRepository;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -23,9 +22,9 @@ public class NewPostCrawler {
     }
 
     public void searchNewPost() throws IOException {
-        List<Crawling> allSubscribers = crawlingRepository.findAll();
+        List<Target> allSubscribers = crawlingRepository.findAll();
 
-        for(Crawling subscriber : allSubscribers) {
+        for(Target subscriber : allSubscribers) {
 
             String velogUser = subscriber.getVelogUserName();
             NewPostDto newPostDto = new NewPostDto();
