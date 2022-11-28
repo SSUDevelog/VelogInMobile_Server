@@ -5,8 +5,10 @@ import com.veloginmobile.server.data.dto.subscribe.SubscribePostDto;
 import com.veloginmobile.server.data.dto.subscribe.SubscribeRequestDto;
 import com.veloginmobile.server.data.dto.subscribe.SubscriberPostResultDto;
 import com.veloginmobile.server.data.entity.Subscribe;
+import com.veloginmobile.server.data.entity.Target;
 import com.veloginmobile.server.data.entity.User;
 import com.veloginmobile.server.data.repository.SubscribeRepository;
+import com.veloginmobile.server.data.repository.TargetRepository;
 import com.veloginmobile.server.data.repository.UserRepository;
 import com.veloginmobile.server.service.SubscribeService;
 import org.jsoup.Jsoup;
@@ -28,20 +30,20 @@ import java.util.List;
 public class SubscribeServiceImpl implements SubscribeService {
 
     SubscribeRepository subscribeRepository;
-
     UserRepository userRepository;
+    TargetRepository targetRepository;
 
     @Autowired
-    public SubscribeServiceImpl(SubscribeRepository subscribeRepository, UserRepository userRepository) {
+    public SubscribeServiceImpl(SubscribeRepository subscribeRepository, UserRepository userRepository, TargetRepository targetRepository) {
         this.subscribeRepository = subscribeRepository;
         this.userRepository = userRepository;
+        this.targetRepository = targetRepository;
     }
 
 
     public SubscriberPostResultDto getSubscribersPost(String uid) throws IOException, SubscribeException {
         User user = userRepository.getByUid(uid);//밖으로 빼야함.
-        Subscribe subscribe = subscribeRepository.findByUser(user);
-        List<String> subscribers = subscribe.getSubscribers();
+        List<String> subscribers = getSubscribers(user);
 
         return getSubscribersPost(subscribers);
     }
@@ -66,25 +68,19 @@ public class SubscribeServiceImpl implements SubscribeService {
     public void addSubscribe(String uid, String subscriber) throws SubscribeException {
 
         User user = userRepository.getByUid(uid);
-        Subscribe subscribe = subscribeRepository.findByUser(user);
-        if (subscribe == null) {
-            subscribe = makeSubscribe(user);
-        }
 
-        if(subscribe.getSubscribers().contains(subscriber)){
+        if(getSubscribers(user).contains(subscriber)){
             throw new SubscribeException(HttpStatus.BAD_REQUEST, "이미 추가한 구독대상입니다.");
         }
 
-        subscribe.getSubscribers().add(subscriber);
-        subscribeRepository.save(subscribe);
+        makeSubscribe(user, subscriber);
     }
 
     public List<String> getSubscribers(String userName){
 
         User user = userRepository.getByUid(userName);
-        Subscribe subscribe = subscribeRepository.findByUser(user);
 
-        return subscribe.getSubscribers();
+        return getSubscribers(user);
     }
 
     public List<SubscribePostDto> getSubscriberPosts(String subscriber) throws IOException {
@@ -139,19 +135,40 @@ public class SubscribeServiceImpl implements SubscribeService {
         return subscribeRequestDto;
     }
 
+    private List<String> getSubscribers(User user){
+        List<Subscribe> subscribes = user.getSubscribes();
+        List<String> subscribers = new ArrayList<>();
+        System.out.println("12312549125125125125125");
+        for(Subscribe subscribe: subscribes){
+            subscribers.add(subscribe.getTarget().getVelogUserName());
+        }
+
+        return subscribers;
+    }
+
     private void getVelogUserProfilePicture(SubscribeRequestDto subscribeRequestDto) throws IOException {
         Document document = Jsoup.connect(subscribeRequestDto.getProfileURL()).get();
         Elements profileImageURL = document.select("#root > div.sc-efQSVx.sc-cTAqQK.hKuDqm > div.sc-hiwPVj.cFguvd.sc-dkqQuH > div.sc-jlRLRk.itanDZ.sc-dwsnSq.cXXBgc > div.sc-dUbtfd.gBxoyd > a > img");
         subscribeRequestDto.setProfilePictureURL(profileImageURL.attr("src"));
     }
 
+    private void makeSubscribe(User user, String subscriber){
+        Target target = targetRepository.getByVelogUserName(subscriber);
+        if(target == null){
+            target = new Target();
+            target.setVelogUserName(subscriber);
+        }
 
-    private Subscribe makeSubscribe(User user) {
+        makeSubscribe(user, target);
+    }
+
+    private void makeSubscribe(User user, Target target) {
 
         Subscribe subscribe = new Subscribe();
 
         subscribe.setUser(user);
-        return subscribeRepository.save(subscribe);
+        subscribe.setTarget(target);
+        subscribeRepository.save(subscribe);
     }
 
     private int openURL(String profileURL) throws IOException {

@@ -53,6 +53,7 @@ public class SignServiceImpl implements SignService {
                     .build();
         }
 
+        LOGGER.info("[getSignUpResult] userRepository 저장");
         User savedUser = userRepository.save(user);
         SignUpResultDto signUpResultDto = new SignInResultDto();
 
