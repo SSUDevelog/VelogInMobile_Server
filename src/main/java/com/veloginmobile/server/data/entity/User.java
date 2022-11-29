@@ -32,7 +32,8 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "user")
+    //영속성 전이. 삭제되면 아래 얘도 삭제 되도록
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Subscribe> subscribes = new ArrayList<>();
 
     @ElementCollection(fetch = FetchType.EAGER)

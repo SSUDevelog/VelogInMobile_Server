@@ -54,7 +54,9 @@ public class SubscribeServiceImpl implements SubscribeService {
 
         for (String sub : subscribers) {
             List<SubscribePostDto> subscribePostDtos = getSubscriberPosts(sub);
-            subscriberPostResultDto.getSubscribePostDtoList().addAll(subscribePostDtos);
+            if(subscribePostDtos != null) {
+                subscriberPostResultDto.getSubscribePostDtoList().addAll(subscribePostDtos);
+            }
         }
         Collections.sort(subscriberPostResultDto.getSubscribePostDtoList(), SubscribePostDto.compareByDate);
         if(subscriberPostResultDto.getSubscribePostDtoList() == null){
@@ -91,7 +93,6 @@ public class SubscribeServiceImpl implements SubscribeService {
         List<SubscribePostDto> subscribePostDtos = new ArrayList<>();
 
         Elements posts = doc.select("#root > div > div > div > div > div").get(6).select("> div");
-        System.out.println(posts);
 
         for (Element post : posts) {
 
@@ -138,11 +139,10 @@ public class SubscribeServiceImpl implements SubscribeService {
     private List<String> getSubscribers(User user){
         List<Subscribe> subscribes = user.getSubscribes();
         List<String> subscribers = new ArrayList<>();
-        System.out.println("12312549125125125125125");
+
         for(Subscribe subscribe: subscribes){
             subscribers.add(subscribe.getTarget().getVelogUserName());
         }
-        System.out.println("999999999999999999");
 
         return subscribers;
     }
@@ -158,6 +158,7 @@ public class SubscribeServiceImpl implements SubscribeService {
         if(target == null){
             target = new Target();
             target.setVelogUserName(subscriber);
+            targetRepository.save(target);
         }
 
         makeSubscribe(user, target);

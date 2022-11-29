@@ -17,11 +17,12 @@ public class Subscribe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne
+    //영속성 전이! - Persist - 영속화 시 연관 된 엔티티 유지
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(referencedColumnName = "uid")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(referencedColumnName = "velog_user_name")
     private Target target;
 
