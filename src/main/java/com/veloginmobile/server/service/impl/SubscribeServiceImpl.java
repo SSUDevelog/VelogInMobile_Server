@@ -142,6 +142,7 @@ public class SubscribeServiceImpl implements SubscribeService {
         for(Subscribe subscribe: subscribes){
             subscribers.add(subscribe.getTarget().getVelogUserName());
         }
+        System.out.println("999999999999999999");
 
         return subscribers;
     }
