@@ -54,12 +54,12 @@ public class SubscribeServiceImpl implements SubscribeService {
 
         for (String sub : subscribers) {
             List<SubscribePostDto> subscribePostDtos = getSubscriberPosts(sub);
-            if(subscribePostDtos != null) {
+            if(!subscribePostDtos.isEmpty()) {
                 subscriberPostResultDto.getSubscribePostDtoList().addAll(subscribePostDtos);
             }
         }
         Collections.sort(subscriberPostResultDto.getSubscribePostDtoList(), SubscribePostDto.compareByDate);
-        if(subscriberPostResultDto.getSubscribePostDtoList() == null){
+        if(subscriberPostResultDto.getSubscribePostDtoList().isEmpty()){
             throw new SubscribeException(HttpStatus.ACCEPTED, "불러올 포스트가 없습니다.");
         }
 
@@ -95,24 +95,27 @@ public class SubscribeServiceImpl implements SubscribeService {
         Elements posts = doc.select("#root > div > div > div > div > div").get(6).select("> div");
 
         for (Element post : posts) {
+            try {
+                SubscribePostDto subscribePostDto = new SubscribePostDto();
 
-            SubscribePostDto subscribePostDto = new SubscribePostDto();
+                subscribePostDto.setName(subscriber);
+                subscribePostDto.setTitle(post.select("a h2").text());
+                subscribePostDto.setSummary(post.select("p").text());
+                subscribePostDto.setDate(post.select(".subinfo span").get(0).text());
+                subscribePostDto.setComment(Integer.parseInt(post.select(".subinfo span").get(1).text().replace("개의 댓글", "")));
+                subscribePostDto.setLike(Integer.parseInt(post.select(".subinfo span").get(2).text()));
+                subscribePostDto.setImg(post.select("a div img").attr("src"));
+                subscribePostDto.setUrl(post.select("> a").attr("href"));
 
-            subscribePostDto.setName(subscriber);
-            subscribePostDto.setTitle(post.select("a h2").text());
-            subscribePostDto.setSummary(post.select("p").text());
-            subscribePostDto.setDate(post.select(".subinfo span").get(0).text());
-            subscribePostDto.setComment(Integer.parseInt(post.select(".subinfo span").get(1).text().replace("개의 댓글", "")));
-            subscribePostDto.setLike(Integer.parseInt(post.select(".subinfo span").get(2).text()));
-            subscribePostDto.setImg(post.select("a div img").attr("src"));
-            subscribePostDto.setUrl(post.select("> a").attr("href"));
+                Elements tags = post.select(".tags-wrapper a");
+                for (Element tag : tags) {
+                    subscribePostDto.getTag().add(tag.text());
+                }
 
-            Elements tags = post.select(".tags-wrapper a");
-            for (Element tag : tags) {
-                subscribePostDto.getTag().add(tag.text());
+                subscribePostDtos.add(subscribePostDto);
+            } catch (RuntimeException e){
+                return subscribePostDtos;
             }
-
-            subscribePostDtos.add(subscribePostDto);
         }
 
         return subscribePostDtos;
