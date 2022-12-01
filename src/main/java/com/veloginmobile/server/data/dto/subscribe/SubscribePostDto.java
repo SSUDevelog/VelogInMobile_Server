@@ -60,7 +60,7 @@ public class SubscribePostDto {
             Date d1 = new Date(Integer.parseInt(o1d.substring(0, 4)), Integer.parseInt(o1d.substring(6, o1d.indexOf("월"))), Integer.parseInt(o1d.substring(o1d.indexOf("월 ")+2, o1d.indexOf("일"))));
             Date d2 = new Date(Integer.parseInt(o2d.substring(0, 4)), Integer.parseInt(o2d.substring(6, o2d.indexOf("월"))), Integer.parseInt(o2d.substring(o2d.indexOf("월 ")+2, o2d.indexOf("일"))));
 
-            return d1.compareTo(d2);
+            return -d1.compareTo(d2);
         }
     };
 }

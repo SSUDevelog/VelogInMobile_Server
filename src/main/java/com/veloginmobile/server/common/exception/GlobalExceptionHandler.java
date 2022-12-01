@@ -17,38 +17,6 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionHandler.class);
-
-    @ExceptionHandler(value = RuntimeException.class)
-    public ResponseEntity<Map<String, String>> handleExeption(RuntimeException e, HttpServletRequest request) {
-        HttpHeaders responseHeaders = new HttpHeaders();
-        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
-
-        LOGGER.error("Global - RuntimeException, {}, {}", request.getRequestURI(), e.getMessage());
-
-        Map<String, String> map = new HashMap<>();
-        map.put("error type", httpStatus.getReasonPhrase());
-        map.put("code", "400");
-        map.put("message", e.getMessage());
-
-        return new ResponseEntity<>(map, responseHeaders, httpStatus);
-    }
-
-    @ExceptionHandler(IOException.class)
-    public ResponseEntity<Map<String, String>> handleIOException(IOException e, HttpServletRequest request) {
-        HttpHeaders responseHeaders = new HttpHeaders();
-        HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
-
-        LOGGER.error("Global - RuntimeException, {}, {}", request.getRequestURI(), e.getMessage());
-
-        Map<String, String> map = new HashMap<>();
-        map.put("error type", httpStatus.getReasonPhrase());
-        map.put("code", "500");
-        map.put("message", e.getMessage());
-
-        return new ResponseEntity<>(map, responseHeaders, httpStatus);
-    }
-
     @ExceptionHandler(value = SignException.class)
     public ResponseEntity<Map<String, String>> SignExceptionHandler(SignException e) {
         HttpHeaders responseHeaders = new HttpHeaders();
@@ -90,6 +58,38 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(FirebaseMessagingException.class)
     public ResponseEntity<Map<String, String>> handleFirebaseMessagingException(FirebaseMessagingException e, HttpServletRequest request) {
+        HttpHeaders responseHeaders = new HttpHeaders();
+        HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
+
+        LOGGER.error("Global - RuntimeException, {}, {}", request.getRequestURI(), e.getMessage());
+
+        Map<String, String> map = new HashMap<>();
+        map.put("error type", httpStatus.getReasonPhrase());
+        map.put("code", "500");
+        map.put("message", e.getMessage());
+
+        return new ResponseEntity<>(map, responseHeaders, httpStatus);
+    }
+
+    private final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionHandler.class);
+
+    @ExceptionHandler(value = RuntimeException.class)
+    public ResponseEntity<Map<String, String>> handleExeption(RuntimeException e, HttpServletRequest request) {
+        HttpHeaders responseHeaders = new HttpHeaders();
+        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
+
+        LOGGER.error("Global - RuntimeException, {}, {}", request.getRequestURI(), e.getMessage());
+
+        Map<String, String> map = new HashMap<>();
+        map.put("error type", httpStatus.getReasonPhrase());
+        map.put("code", "400");
+        map.put("message", e.getMessage());
+
+        return new ResponseEntity<>(map, responseHeaders, httpStatus);
+    }
+
+    @ExceptionHandler(IOException.class)
+    public ResponseEntity<Map<String, String>> handleIOException(IOException e, HttpServletRequest request) {
         HttpHeaders responseHeaders = new HttpHeaders();
         HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 
