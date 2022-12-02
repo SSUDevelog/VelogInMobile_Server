@@ -4,6 +4,7 @@ import com.veloginmobile.server.common.exception.SubscribeException;
 import com.veloginmobile.server.config.security.JwtTokenProvider;
 import com.veloginmobile.server.data.dto.subscribe.SubscribeRequestDto;
 import com.veloginmobile.server.data.dto.subscribe.SubscriberPostResultDto;
+import com.veloginmobile.server.data.dto.subscribe.UnsubscribeDto;
 import com.veloginmobile.server.service.NotificationService;
 import com.veloginmobile.server.service.SubscribeService;
 import io.swagger.annotations.ApiImplicitParam;
@@ -84,8 +85,10 @@ public class SubscribeController {
 
     @DeleteMapping("/unsubscribe/{targetName}")
     @ResponseBody
-    public void unSubscribe(@RequestHeader("X-AUTH-TOKEN") String token, @PathVariable String targetName) {
+    public ResponseEntity<UnsubscribeDto> unSubscribe(@RequestHeader("X-AUTH-TOKEN") String token, @PathVariable String targetName) {
         String userName = jwtTokenProvider.getUsername(token);
-        subscribeService.deleteSubscribe(userName, targetName);
+        UnsubscribeDto unsubscribeDto = subscribeService.deleteSubscribe(userName, targetName);
+        subscribeService.validateTarget(targetName);
+        return ResponseEntity.status(HttpStatus.OK).body(unsubscribeDto);
     }
 }

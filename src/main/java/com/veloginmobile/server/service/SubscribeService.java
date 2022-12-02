@@ -4,6 +4,7 @@ import com.veloginmobile.server.common.exception.SubscribeException;
 import com.veloginmobile.server.data.dto.subscribe.SubscribePostDto;
 import com.veloginmobile.server.data.dto.subscribe.SubscribeRequestDto;
 import com.veloginmobile.server.data.dto.subscribe.SubscriberPostResultDto;
+import com.veloginmobile.server.data.dto.subscribe.UnsubscribeDto;
 import com.veloginmobile.server.data.entity.Subscribe;
 
 import java.io.IOException;
@@ -20,7 +21,9 @@ public interface SubscribeService {
     void addSubscribe(String uid, String subscriber) throws SubscribeException;
 
     List<String> getSubscribers(String userName) throws SubscribeException;
-    void deleteSubscribe(String userName, String targetName);
+    UnsubscribeDto deleteSubscribe(String userName, String targetName);
+
+    void validateTarget(String targetName);
 
     Boolean isValidateUser(SubscribeRequestDto subscribeRequestDto, String velogUsername) throws IOException;
 
