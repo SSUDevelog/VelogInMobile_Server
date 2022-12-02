@@ -4,6 +4,7 @@ import com.veloginmobile.server.common.exception.SubscribeException;
 import com.veloginmobile.server.data.dto.subscribe.SubscribePostDto;
 import com.veloginmobile.server.data.dto.subscribe.SubscribeRequestDto;
 import com.veloginmobile.server.data.dto.subscribe.SubscriberPostResultDto;
+import com.veloginmobile.server.data.dto.subscribe.UnsubscribeDto;
 import com.veloginmobile.server.data.entity.Subscribe;
 import com.veloginmobile.server.data.entity.Target;
 import com.veloginmobile.server.data.entity.User;
@@ -139,11 +140,22 @@ public class SubscribeServiceImpl implements SubscribeService {
         return subscribeRequestDto;
     }
 
-    public void deleteSubscribe(String userName, String targetName) {
+    public UnsubscribeDto deleteSubscribe(String userName, String targetName) {
+        UnsubscribeDto unsubscribeDto = new UnsubscribeDto();
         User user = userRepository.getByUid(userName);
         Target target = targetRepository.getByVelogUserName(targetName);
         Subscribe subscribe = subscribeRepository.getByUserAndTarget(user, target);
         subscribeRepository.delete(subscribe);
+        unsubscribeDto.setSuccess(Boolean.TRUE);
+        unsubscribeDto.setMsg("구독을 취소했습니다.");
+        return unsubscribeDto;
+    }
+
+    public void validateTarget(String targetName) {
+        Target target = targetRepository.getByVelogUserName(targetName);
+        if (target.getSubscribes() == null) {
+            targetRepository.delete(target);
+        }
     }
 
     private List<String> getSubscribers(User user){
