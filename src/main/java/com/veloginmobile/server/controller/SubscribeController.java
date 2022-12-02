@@ -81,4 +81,11 @@ public class SubscribeController {
 
         return ResponseEntity.status(HttpStatus.OK).body(subscribeRequestDto);
     }
+
+    @DeleteMapping("/unsubscribe/{targetName}")
+    @ResponseBody
+    public void unSubscribe(@RequestHeader("X-AUTH-TOKEN") String token, @PathVariable String targetName) {
+        String userName = jwtTokenProvider.getUsername(token);
+        subscribeService.deleteSubscribe(userName, targetName);
+    }
 }

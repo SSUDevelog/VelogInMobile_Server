@@ -139,6 +139,13 @@ public class SubscribeServiceImpl implements SubscribeService {
         return subscribeRequestDto;
     }
 
+    public void deleteSubscribe(String userName, String targetName) {
+        User user = userRepository.getByUid(userName);
+        Target target = targetRepository.getByVelogUserName(targetName);
+        Subscribe subscribe = subscribeRepository.getByUserAndTarget(user, target);
+        subscribeRepository.delete(subscribe);
+    }
+
     private List<String> getSubscribers(User user){
         List<Subscribe> subscribes = user.getSubscribes();
         List<String> subscribers = new ArrayList<>();
