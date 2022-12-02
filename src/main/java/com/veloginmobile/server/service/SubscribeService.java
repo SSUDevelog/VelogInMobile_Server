@@ -20,6 +20,7 @@ public interface SubscribeService {
     void addSubscribe(String uid, String subscriber) throws SubscribeException;
 
     List<String> getSubscribers(String userName) throws SubscribeException;
+    void deleteSubscribe(String userName, String targetName);
 
     Boolean isValidateUser(SubscribeRequestDto subscribeRequestDto, String velogUsername) throws IOException;
 
