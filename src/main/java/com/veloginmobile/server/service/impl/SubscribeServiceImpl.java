@@ -153,7 +153,7 @@ public class SubscribeServiceImpl implements SubscribeService {
 
     public void validateTarget(String targetName) {
         Target target = targetRepository.getByVelogUserName(targetName);
-        if (target.getSubscribes() == null) {
+        if (target.getSubscribes().isEmpty()) {
             targetRepository.delete(target);
         }
     }
