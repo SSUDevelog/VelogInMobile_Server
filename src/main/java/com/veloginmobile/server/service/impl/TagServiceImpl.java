@@ -113,6 +113,22 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
+    public void deleteTag(String uid, String tag) throws TagException {
+
+        User user = userRepository.getByUid(uid);
+        Tag tags = tagRepository.findByUser(user);
+        if (tags == null) {
+            tags = makeTag(user);
+        }
+        if(!tags.getTags().contains(tag)){
+            throw new TagException(HttpStatus.BAD_REQUEST, "목록에 해당 태그가 없습니다.");
+        }
+
+        tags.getTags().remove(tag);
+        tagRepository.save(tags);
+    }
+
+    @Override
     public List<String> getTags(String userName) {
 
         User user = userRepository.getByUid(userName);
