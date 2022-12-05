@@ -17,6 +17,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -36,25 +38,26 @@ public class TagServiceImpl implements TagService {
     @Override
     public List<TagPostDto> getTagPosts(String tag) throws IOException, TagException {
 
-        String userProfileURL = "https://velog.io/tags/" + tag;
-        Document doc = Jsoup.connect(userProfileURL).get();
+        String tagUrl = "https://velog.io/tags/" + tag;
+        Document doc = Jsoup.connect(tagUrl).get();
 
         List<TagPostDto> subscribePostDtos = new ArrayList<>();
 
         Elements posts = doc.select("#root > div > main > div > div").get(1).select("> div");
 
         for (Element post : posts) {
-            TagPostDto tagPostDto = tagPostFactory(post);
+            try {
+                TagPostDto tagPostDto = tagPostFactory(post);
 
-            Elements tags = post.select(".tags-wrapper a");
-            for (Element _tag : tags) {
-                tagPostDto.getTag().add(_tag.text());
+                Elements tags = post.select(".tags-wrapper a");
+                for (Element _tag : tags) {
+                    tagPostDto.getTag().add(_tag.text());
+                }
+
+                subscribePostDtos.add(tagPostDto);
+            } catch (RuntimeException e){
+                throw new TagException(HttpStatus.ACCEPTED, "불러올 포스트가 없거나 문서 구조가 변경되었습니다.");
             }
-
-            subscribePostDtos.add(tagPostDto);
-        }
-        if(subscribePostDtos == null){
-            throw new TagException(HttpStatus.ACCEPTED, "불러올 포스트가 없습니다.");
         }
 
         return subscribePostDtos;
@@ -79,11 +82,16 @@ public class TagServiceImpl implements TagService {
 
         TagPostResultDto tagPostResultDto = new TagPostResultDto();
         for (String tag : tags) {
+            try{
             List<TagPostDto> tagPostDtos = getTagPosts(tag);
             tagPostResultDto.getTagPostDtoList().addAll(tagPostDtos);
+            } catch (TagException e) { }
         }
-        Collections.sort(tagPostResultDto.getTagPostDtoList(), TagPostDto.compareByDate);
+        if(tagPostResultDto.getTagPostDtoList().isEmpty()){
+            throw new TagException(HttpStatus.ACCEPTED, "불러올 포스트가 없거나 문서 구조가 변경되었습니다.");
+        }
 
+        Collections.sort(tagPostResultDto.getTagPostDtoList(), TagPostDto.compareByDate);
         return tagPostResultDto;
     }
 
