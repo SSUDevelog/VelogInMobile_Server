@@ -53,7 +53,6 @@ public class SubscribeController {
     public ResponseEntity<String> addSubscriber(@RequestHeader("X-AUTH-TOKEN") String token, @RequestParam String name, @RequestParam String fcmToken) throws SubscribeException {
         String userName = jwtTokenProvider.getUsername(token);
 
-        //유저가 실제 존재하는지 검증절차 필요. 구독대상 이름으로만 boolean값 반환하는 함수필요.
         subscribeService.addSubscribe(userName, name);
         notificationService.joinGroup(name, fcmToken);
 

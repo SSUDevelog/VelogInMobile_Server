@@ -53,7 +53,7 @@ public class TagServiceImpl implements TagService {
 
             subscribePostDtos.add(tagPostDto);
         }
-        if(subscribePostDtos == null){
+        if (subscribePostDtos.isEmpty()) {
             throw new TagException(HttpStatus.ACCEPTED, "불러올 포스트가 없습니다.");
         }
 
