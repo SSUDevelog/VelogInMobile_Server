@@ -16,5 +16,7 @@ public interface TagService {
 
     void addTag(String uid, String tag) throws TagException;
 
+    void deleteTag(String uid, String tag) throws TagException;
+
     List<String> getTags(String userName) throws TagException;
 }

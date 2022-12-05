@@ -54,6 +54,17 @@ public class TagController {
 
     @ApiImplicitParams({
             @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 발급 받은 access_token", required = true, dataType = "String", paramType = "header")})
+    @DeleteMapping(value = "/deletetag")
+    public ResponseEntity<String> deleteTag(@RequestHeader("X-AUTH-TOKEN") String token, @RequestParam String tag) throws TagException {
+        String userName = jwtTokenProvider.getUsername(token);
+
+        tagService.deleteTag(userName, tag);
+
+        return ResponseEntity.status(HttpStatus.OK).body("Success");
+    }
+
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 발급 받은 access_token", required = true, dataType = "String", paramType = "header")})
     @GetMapping(value = "/tagpost")//responseentity가 없어도 되는지 테스트 되는지 확인해보기//403 402같은 코드를 던질경우 쓰기
     public ResponseEntity<TagPostResultDto> getTagPost(@RequestHeader("X-AUTH-TOKEN") String token) throws IOException, TagException {
         String userName = jwtTokenProvider.getUsername(token);
