@@ -58,6 +58,14 @@ public class TagServiceImpl implements TagService {
             } catch (RuntimeException e){
                 throw new TagException(HttpStatus.ACCEPTED, "불러올 포스트가 없거나 문서 구조가 변경되었습니다.");
             }
+<<<<<<< HEAD
+=======
+
+            subscribePostDtos.add(tagPostDto);
+        }
+        if (subscribePostDtos.isEmpty()) {
+            throw new TagException(HttpStatus.ACCEPTED, "불러올 포스트가 없습니다.");
+>>>>>>> fff13f743cac4608d5420cb0011c594ce106969d
         }
 
         return subscribePostDtos;
