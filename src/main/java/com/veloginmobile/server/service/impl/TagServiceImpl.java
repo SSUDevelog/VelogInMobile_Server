@@ -82,7 +82,7 @@ public class TagServiceImpl implements TagService {
             List<TagPostDto> tagPostDtos = getTagPosts(tag);
             tagPostResultDto.getTagPostDtoList().addAll(tagPostDtos);
         }
-        Collections.sort(tagPostResultDto.getTagPostDtoList(), TagPostDto.compareByDate);
+        tagPostResultDto.getTagPostDtoList().sort(TagPostDto.compareByDate);
 
         return tagPostResultDto;
     }
