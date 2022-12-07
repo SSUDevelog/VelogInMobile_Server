@@ -3,25 +3,13 @@
 # 목차
  1. [구성](#1-구성)              
        
-2. [서버 설계](#2-설치-및-사용-뉴얼)            
-       2.1 [개발자의 경우(설치)](#21-개발자의-경우설치)                  
-       2.2 [일반 사용자의 경우(설치)](#22-일반-사용자의-경우설치)                   
-       2.3 [Velog In Mobile 사용 방법](#23-Velog-In-Mobile-사용-방법)                
-              2.3.1 [로그인뷰](#231-로그인뷰)  
-              2.3.2 [회원가입뷰](#232-회원가입뷰)  
-              2.3.3 [로딩뷰](#233-로딩뷰)              
-              2.3.4 [홉뷰(키워드 글뷰)](#234-홈뷰(키워드-글뷰))     
-              2.3.5 [키워드 리스트뷰](#235-키워드-리스트뷰)
-              2.3.6 [키워드 검색뷰](#236-키워드-검색뷰)
-              2.3.7 [구독자 글뷰](#237-구독자-글뷰)     
-              2.3.8 [구독자 리스트뷰](#238-구독자-리스트뷰)
-              2.3.9 [구독자 검색뷰](#239-구독자-검색뷰)
-              2.3.10 [알림뷰](#2310-알림뷰)
-              2.3.11 [프로필뷰](#2311-프로필뷰) 
+2. [서버 설계](#2-서버-설계)            
+       2.1 [데이터 흐름](#21-개발자의-경우설치)                  
+       2.2 [Spring Web Layer](#22-Spring-Web-Layer)                   
+       2.3 [DB 구조](#23-DB-구조)
+       2.4 [보안](#24-보안)
 
-3. [RestAPI 문서화](#3-협업-규칙)
-       3.1 [브랜치 규칙](#31-브랜치-규칙)
-       3.2 [커밋 규칙](#32-커밋-규칙)
+3. [RestAPI 문서화](#3-RestAPI-문서화)
               
 4. [프로젝트 제작에 참고된 문헌, 서적, URL](#4프로젝트-제작에-참고된-문헌-서적-url)
 
@@ -29,26 +17,35 @@
 
 # 1. 구성
 Server: Google Cloud
+
 Server Framework: Spring Boot
+
 DB: MySQL
+
 Cloud Messaging: FCM
 
 # 2. 서버 설계
 1. 데이터 흐름
 ![그림01](https://user-images.githubusercontent.com/59440722/206168296-56d02a53-798d-42d5-ba10-800b64480063.png)
+
 VelogInMoblie_Server는 서비스 계층에서 Velog 서버의 RestAPI를 이용해 필요한 데이터를 수집 후 데이터를 가공합니다.
+
 푸시알림은 FCM을 이용합니다.
 
 2. Spring Web Layer
 ![그림06](https://user-images.githubusercontent.com/59440722/206169633-8310e3ee-d10f-418e-82f5-f58bbc386125.png)
+
 Spring Web Layer는 위와 같습니다.
 
 3. DB 구조
 ![그림02](https://user-images.githubusercontent.com/59440722/206168855-d5ec47d6-a8fd-49c9-8798-752c15240447.png)
+
 주요 테이블로는 User, Target, Subscribe, Tag, Notification이 있습니다.
+
 위와 같은 관계를 가집니다.
 
 ![그림03](https://user-images.githubusercontent.com/59440722/206168978-ab21f8b3-5665-477b-886a-b7125d425429.png)
+
 User와 그들이 구독하는 Target(실제 Velog 유저)는 다대다 관계로, 이를 구현하기 위해 User와 Target 테이블은 각각 Subscribe 테이블과 다대일 관계를 맺고있습니다.
 
 4. 보안
@@ -61,6 +58,7 @@ http://localhost:8080/swagger-ui.html
 
 프로젝트를 구동 후 위의 경로에 접속하시면
 ![그림04](https://user-images.githubusercontent.com/59440722/206170823-e8946504-dd76-4bfa-bfe4-dff85ba30e88.png)
+
 다음과 같은 API 목록들이 생기며 직접 실행해 볼 수 있습니다.
 
 # 4. 프로젝트 제작에 참고된 문헌, 서적, URL
