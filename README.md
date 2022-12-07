@@ -1,4 +1,6 @@
-# " 기술 공유에 편리함을 제공하는 Velog In Mobile_Server입니다. "
+# " 기술 공유에 편리함을 제공하는 Velog In Mobile 입니다. "
+
+## Server 파트
 
 # 목차
  1. [구성](#1-구성)              
