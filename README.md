@@ -11,7 +11,7 @@
 
  3. [RestAPI 문서화](#3-RestAPI-문서화)
               
- 4. [프로젝트 제작에 참고된 문헌, 서적, URL](#4프로젝트-제작에-참고된-문헌-서적-url)
+ 4. [프로젝트 제작에 참고된 문헌, 서적, URL](#4-프로젝트-제작에-참고된-문헌-서적-url)
 
  5. [프로젝트 참여 개발자 정보](#5-프로젝트-참여-개발자-정보)
 
@@ -79,7 +79,7 @@ https://firebase.google.com/docs/cloud-messaging/manage-topics?hl=ko
 https://backtony.github.io/spring/2021-08-20-spring-fcm-1/
 https://velog.io/@co323co/SpringBoot-Push-Server
 
-# 5. 프로젝트  개발자 정보
+# 5. 프로젝트 개발자 정보
 
 iOS : 홍준혁 Github Profile - https://github.com/hongjunehuke
 
