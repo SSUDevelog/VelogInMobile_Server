@@ -3,17 +3,17 @@
 # 목차
  1. [구성](#1-구성)              
        
-2. [서버 설계](#2-서버-설계)            
+ 2. [서버 설계](#2-서버-설계)            
        2.1 [데이터 흐름](#21-개발자의-경우설치)                  
        2.2 [Spring Web Layer](#22-Spring-Web-Layer)                   
        2.3 [DB 구조](#23-DB-구조)
        2.4 [보안](#24-보안)
 
-3. [RestAPI 문서화](#3-RestAPI-문서화)
+ 3. [RestAPI 문서화](#3-RestAPI-문서화)
               
-4. [프로젝트 제작에 참고된 문헌, 서적, URL](#4프로젝트-제작에-참고된-문헌-서적-url)
+ 4. [프로젝트 제작에 참고된 문헌, 서적, URL](#4프로젝트-제작에-참고된-문헌-서적-url)
 
-5. [프로젝트 참여 개발자 정보](#5-프로젝트-참여-개발자-정보)
+ 5. [프로젝트 참여 개발자 정보](#5-프로젝트-참여-개발자-정보)
 
 # 1. 구성
 Server: Google Cloud
@@ -25,19 +25,19 @@ DB: MySQL
 Cloud Messaging: FCM
 
 # 2. 서버 설계
-1. 데이터 흐름
+## 2.1 데이터 흐름
 ![그림01](https://user-images.githubusercontent.com/59440722/206168296-56d02a53-798d-42d5-ba10-800b64480063.png)
 
 VelogInMoblie_Server는 서비스 계층에서 Velog 서버의 RestAPI를 이용해 필요한 데이터를 수집 후 데이터를 가공합니다.
 
 푸시알림은 FCM을 이용합니다.
 
-2. Spring Web Layer
+## 2.2 Spring Web Layer
 ![그림06](https://user-images.githubusercontent.com/59440722/206169633-8310e3ee-d10f-418e-82f5-f58bbc386125.png)
 
 Spring Web Layer는 위와 같습니다.
 
-3. DB 구조
+## 2.3 DB 구조
 ![그림02](https://user-images.githubusercontent.com/59440722/206168855-d5ec47d6-a8fd-49c9-8798-752c15240447.png)
 
 주요 테이블로는 User, Target, Subscribe, Tag, Notification이 있습니다.
@@ -48,7 +48,7 @@ Spring Web Layer는 위와 같습니다.
 
 User와 그들이 구독하는 Target(실제 Velog 유저)는 다대다 관계로, 이를 구현하기 위해 User와 Target 테이블은 각각 Subscribe 테이블과 다대일 관계를 맺고있습니다.
 
-4. 보안
+## 2.4 보안
 Spring Security와 Jwt 토큰을 이용해 API 이용에 대한 인증, 인가처리를 하고있습니다.
 
 # 3. RestAPI 문서화
