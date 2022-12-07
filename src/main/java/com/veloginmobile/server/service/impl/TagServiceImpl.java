@@ -90,7 +90,7 @@ public class TagServiceImpl implements TagService {
             throw new TagException(HttpStatus.ACCEPTED, "불러올 포스트가 없거나 문서 구조가 변경되었습니다.");
         }
 
-        Collections.sort(tagPostResultDto.getTagPostDtoList(), TagPostDto.compareByDate);
+        tagPostResultDto.getTagPostDtoList().sort(TagPostDto.compareByDate);
         return tagPostResultDto;
     }
 
