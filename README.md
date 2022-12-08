@@ -56,8 +56,6 @@ Spring Security와 Jwt 토큰을 이용해 API 이용에 대한 인증, 인가�
 # 3. RestAPI 문서화
 VelogInMobile_Server는 Swagger를 이용해 자동 문서화를 합니다.
 
-http://localhost:8080/swagger-ui.html
-
 프로젝트를 구동 후 위의 경로에 접속하시면
 ![그림04](https://user-images.githubusercontent.com/59440722/206170823-e8946504-dd76-4bfa-bfe4-dff85ba30e88.png)
 
