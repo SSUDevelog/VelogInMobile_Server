@@ -34,13 +34,13 @@ public class TagPostDto {
 
             if(o1.getDate().contains("분 전") || o2.getDate().contains("분 전")){
                 if(o1.getDate().contains("분 전") && o2.getDate().contains("분 전")){
-                    return Integer.parseInt(o1.getDate().replace("분 전", "")) > Integer.parseInt(o2.getDate().replace("분 전", "")) ? 1 : -1;
+                    return Integer.parseInt(o1.getDate().replace("분 전", "")) >= Integer.parseInt(o2.getDate().replace("분 전", "")) ? 1 : -1;
                 } else if (o1.getDate().contains("분 전")) return -1; else return 1;
             }
 
             if(o1.getDate().contains("시간 전") || o2.getDate().contains("시간 전")){
                 if(o1.getDate().contains("시간 전") && o2.getDate().contains("시간 전")){
-                    return Integer.parseInt(o1.getDate().replace("시간 전", "").replace("약 ", "")) > Integer.parseInt(o2.getDate().replace("시간 전", "").replace("약 ", "")) ? 1 : -1;
+                    return Integer.parseInt(o1.getDate().replace("시간 전", "").replace("약 ", "")) >= Integer.parseInt(o2.getDate().replace("시간 전", "").replace("약 ", "")) ? 1 : -1;
                 } else if (o1.getDate().contains("시간 전")) return -1; else return 1;
             }
 
@@ -50,7 +50,7 @@ public class TagPostDto {
 
             if(o1.getDate().contains("일 전") || o2.getDate().contains("일 전")){
                 if(o1.getDate().contains("일 전") && o2.getDate().contains("일 전")){
-                    return Integer.parseInt(o1.getDate().replace("일 전", "")) > Integer.parseInt(o2.getDate().replace("일 전", "")) ? 1 : -1;
+                    return Integer.parseInt(o1.getDate().replace("일 전", "")) >= Integer.parseInt(o2.getDate().replace("일 전", "")) ? 1 : -1;
                 } else if (o1.getDate().contains("일 전")) return -1; else return 1;
             }
 
