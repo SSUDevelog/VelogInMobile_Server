@@ -39,6 +39,6 @@ public class NewPostCrawler {
                 newPostDto.newPostAuthor.add(velogUser);
             }
         }
-        // 알림 함수 호출 부분
+        //알림함수 호출부분
     }
 }
