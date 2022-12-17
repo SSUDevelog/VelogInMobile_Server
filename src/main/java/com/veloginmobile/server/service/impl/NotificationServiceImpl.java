@@ -63,8 +63,12 @@ public class NotificationServiceImpl implements NotificationService {
             notification.setGroupName(groupName);
         }
 
-        notification.getReceivers().add(fcmToken);
-        notificationRepository.save(notification);
+        if (!notification.getReceivers().contains(fcmToken)) {
+            notification.getReceivers().add(fcmToken);
+            notificationRepository.save(notification);
+        }
+//        notification.getReceivers().add(fcmToken);
+//        notificationRepository.save(notification);
     }
 
     @Override
