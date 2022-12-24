@@ -33,7 +33,7 @@ public class User implements UserDetails {
     private String name;
 
     //영속성 전이. 삭제되면 아래 얘도 삭제 되도록
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Subscribe> subscribes = new ArrayList<>();
 
     @ElementCollection(fetch = FetchType.EAGER)

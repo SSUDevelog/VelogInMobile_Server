@@ -3,10 +3,7 @@ package com.veloginmobile.server.service.impl;
 import com.veloginmobile.server.common.CommonResponse;
 import com.veloginmobile.server.common.exception.SignException;
 import com.veloginmobile.server.config.security.JwtTokenProvider;
-import com.veloginmobile.server.data.dto.sign.SignInDto;
-import com.veloginmobile.server.data.dto.sign.SignInResultDto;
-import com.veloginmobile.server.data.dto.sign.SignUpDto;
-import com.veloginmobile.server.data.dto.sign.SignUpResultDto;
+import com.veloginmobile.server.data.dto.sign.*;
 import com.veloginmobile.server.data.entity.User;
 import com.veloginmobile.server.data.repository.UserRepository;
 import com.veloginmobile.server.service.SignService;
@@ -91,6 +88,28 @@ public class SignServiceImpl implements SignService {
         setSuccessResult(signInResultDto);
 
         return signInResultDto;
+    }
+
+    @Override
+    public SignOutResultDto signOut(SignOutDto signOutDto) throws SignException{
+        LOGGER.info("[getSignOutResult] 회원 탈퇴 정보 전달");
+        User user = userRepository.getByUid(signOutDto.getId());
+
+        if(user == null){
+            throw new SignException(HttpStatus.BAD_REQUEST, "없는 아이디입니다.");
+        }
+
+        if(!passwordEncoder.matches(signOutDto.getPassword(), user.getPassword())){
+            throw new SignException(HttpStatus.BAD_REQUEST, "비밀번호가 다릅니다.");
+        }
+
+        LOGGER.info("[getSignOutResult] userRepository 삭제");
+        userRepository.delete(user);//값타입과 연관 데이터들도 지워지는지 체크
+        SignOutResultDto signOutResultDto = new SignOutResultDto();
+
+        setSuccessResult(signOutResultDto);
+
+        return signOutResultDto;
     }
 
     private void setSuccessResult(SignUpResultDto result) {

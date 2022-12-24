@@ -1,10 +1,7 @@
 package com.veloginmobile.server.controller;
 
 import com.veloginmobile.server.common.exception.SignException;
-import com.veloginmobile.server.data.dto.sign.SignInDto;
-import com.veloginmobile.server.data.dto.sign.SignInResultDto;
-import com.veloginmobile.server.data.dto.sign.SignUpDto;
-import com.veloginmobile.server.data.dto.sign.SignUpResultDto;
+import com.veloginmobile.server.data.dto.sign.*;
 import com.veloginmobile.server.service.NotificationService;
 import com.veloginmobile.server.service.SignService;
 import org.slf4j.Logger;
@@ -55,5 +52,18 @@ public class SignController {
 
         LOGGER.info("[signUp] 회원가입을 완료했습니다. id : {}", signUpDto.getId());
         return signUpResultDto;
+    }
+
+    @PostMapping(value = "/sign-out")
+    public SignOutResultDto signOut(
+            @Validated @RequestBody SignOutDto signOutDto) throws SignException {
+        LOGGER.info("[signIn] 회원탈퇴를 시도하고 있습니다. id : {}, pw : ****", signOutDto.getId());
+        SignOutResultDto signOutResultDto = signService.signOut(signOutDto);
+
+        if(signOutResultDto.getCode() == 0) {
+            LOGGER.info("[signIn] 정상적으로 회원 탈퇴 되었습니다. id : {}, token : {}", signOutDto.getId());
+            notificationService.outGroup("AllGroup", signOutDto.getFcmToken());
+        }
+        return signOutResultDto;
     }
 }

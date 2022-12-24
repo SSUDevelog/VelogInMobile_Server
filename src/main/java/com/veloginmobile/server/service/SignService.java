@@ -1,10 +1,7 @@
 package com.veloginmobile.server.service;
 
 import com.veloginmobile.server.common.exception.SignException;
-import com.veloginmobile.server.data.dto.sign.SignInDto;
-import com.veloginmobile.server.data.dto.sign.SignInResultDto;
-import com.veloginmobile.server.data.dto.sign.SignUpDto;
-import com.veloginmobile.server.data.dto.sign.SignUpResultDto;
+import com.veloginmobile.server.data.dto.sign.*;
 
 public interface SignService {
 
@@ -12,4 +9,5 @@ public interface SignService {
 
     SignInResultDto signIn(SignInDto signInDto) throws SignException;
 
+    SignOutResultDto signOut(SignOutDto signOutDto) throws SignException;
 }
