@@ -24,4 +24,8 @@ public class NotificationDto {
     @ApiParam(value = "Link", required = true)
     @NotBlank
     private String link;
+
+    @ApiParam(value = "userName", required = true)
+    @NotBlank
+    private String userName;
 }

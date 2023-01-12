@@ -1,5 +1,6 @@
 package com.veloginmobile.server.service;
 
+import com.google.firebase.messaging.FirebaseMessagingException;
 import com.veloginmobile.server.crawler.NewPostCrawler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -15,11 +16,13 @@ public class CrawlerRunner implements Runnable {
     NewPostCrawler newPostCrawler;
 
     @Override
-    @Scheduled(fixedDelay = 300000)
+    @Scheduled(fixedDelay = 1000 * 60 * 3)
     public void run() {
         try {
             newPostCrawler.searchNewPost();
         } catch (IOException e) {
+
+        } catch (FirebaseMessagingException e) {
 
         }
     }
