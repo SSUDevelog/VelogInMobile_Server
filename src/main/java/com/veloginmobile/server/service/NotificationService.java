@@ -9,4 +9,6 @@ import java.util.List;
 public interface NotificationService {
     List<String> sendByGroupName(String groupName, NotificationDto notificationDto) throws FirebaseMessagingException;
     void joinGroup(String groupName, String fcmToken);
+
+    void outGroup(String groupName, String fcmToken);
 }

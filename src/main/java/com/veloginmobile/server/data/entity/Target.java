@@ -25,7 +25,7 @@ public class Target implements Serializable {
     private String velogUserName;
 
     //영속성 전이. 삭제되면 아래 얘도 삭제 되도록
-    @OneToMany(mappedBy = "target", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "target", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Subscribe> subscribes = new ArrayList<>();
 
 }

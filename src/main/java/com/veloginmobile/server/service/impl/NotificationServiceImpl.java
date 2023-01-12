@@ -63,8 +63,23 @@ public class NotificationServiceImpl implements NotificationService {
             notification.setGroupName(groupName);
         }
 
-        notification.getReceivers().add(fcmToken);
-        notificationRepository.save(notification);
+        if (!notification.getReceivers().contains(fcmToken)) {
+            notification.getReceivers().add(fcmToken);
+            notificationRepository.save(notification);
+        }
+    }
+
+    @Override
+    public void outGroup(String groupName, String fcmToken){
+        com.veloginmobile.server.data.entity.Notification notification = notificationRepository.getByGroupName(groupName);
+        if(notification == null){
+            return;
+        }
+
+        if (notification.getReceivers().contains(fcmToken)) {
+            notification.getReceivers().remove(fcmToken);
+            notificationRepository.save(notification);
+        }
     }
 
     @Override

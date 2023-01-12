@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -34,10 +35,15 @@ public class TagController {
             @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 발급 받은 access_token", required = true, dataType = "String", paramType = "header")})
     @GetMapping(value = "/gettag")
     public ResponseEntity<List<String>> getTag(@RequestHeader("X-AUTH-TOKEN") String token) throws TagException {//제네릭 안의 제네릭 -> 별도응답 객체를 만들어야함!
-        String userName = jwtTokenProvider.getUsername(token);
+        List<String> tags = new ArrayList<>();
+        try {
+            String userName = jwtTokenProvider.getUsername(token);
 
-        List<String> tags = tagService.getTags(userName);
+            tags = tagService.getTags(userName);
 
+        } catch (RuntimeException e) {
+            LOGGER.error("불러올 태그가 없습니다.");
+        }
         return ResponseEntity.status(HttpStatus.OK).body(tags);
     }
 
@@ -48,6 +54,17 @@ public class TagController {
         String userName = jwtTokenProvider.getUsername(token);
 
         tagService.addTag(userName, tag);
+
+        return ResponseEntity.status(HttpStatus.OK).body("Success");
+    }
+
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "X-AUTH-TOKEN", value = "로그인 성공 후 발급 받은 access_token", required = true, dataType = "String", paramType = "header")})
+    @DeleteMapping(value = "/deletetag")
+    public ResponseEntity<String> deleteTag(@RequestHeader("X-AUTH-TOKEN") String token, @RequestParam String tag) throws TagException {
+        String userName = jwtTokenProvider.getUsername(token);
+
+        tagService.deleteTag(userName, tag);
 
         return ResponseEntity.status(HttpStatus.OK).body("Success");
     }

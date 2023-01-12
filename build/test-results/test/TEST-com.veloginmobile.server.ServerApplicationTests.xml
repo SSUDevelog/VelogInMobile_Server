@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.veloginmobile.server.ServerApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-01-04T15:58:11" hostname="DESKTOP-RUAVBMR" time="2.524">
+  <properties/>
+  <testcase name="contextLoads()" classname="com.veloginmobile.server.ServerApplicationTests" time="2.524"/>
+  <system-out><![CDATA[00:58:05.136 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+00:58:05.145 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+00:58:05.171 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.veloginmobile.server.ServerApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+00:58:05.181 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.veloginmobile.server.ServerApplicationTests], using SpringBootContextLoader
+00:58:05.184 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.veloginmobile.server.ServerApplicationTests]: class path resource [com/veloginmobile/server/ServerApplicationTests-context.xml] does not exist
+00:58:05.184 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.veloginmobile.server.ServerApplicationTests]: class path resource [com/veloginmobile/server/ServerApplicationTestsContext.groovy] does not exist
+00:58:05.185 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.veloginmobile.server.ServerApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+00:58:05.185 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.veloginmobile.server.ServerApplicationTests]: ServerApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:58:05.222 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.veloginmobile.server.ServerApplicationTests]
+00:58:05.268 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [C:\Users\KJS\Documents\DV\OpenSource\VelogInMobile_Server\build\classes\java\main\com\veloginmobile\server\ServerApplication.class]
+00:58:05.269 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.veloginmobile.server.ServerApplication for test class com.veloginmobile.server.ServerApplicationTests
+00:58:05.367 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.veloginmobile.server.ServerApplicationTests]: using defaults.
+00:58:05.367 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+00:58:05.381 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@245a26e1, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4d63b624, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@466cf502, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@5b800468, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@2e185cd7, org.springframework.test.context.support.DirtiesContextTestExecutionListener@7e1a1da6, org.springframework.test.context.transaction.TransactionalTestExecutionListener@5f7f2382, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@407cf41, org.springframework.test.context.event.EventPublishingTestExecutionListener@6815c5f2, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@46cc127b, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@60094a13, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5aceec94, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1c32886a, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@3a4b0e5d, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@10b892d5]
+00:58:05.384 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@3aee3976 testClass = ServerApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@5ef8df1e testClass = ServerApplicationTests, locations = '{}', classes = '{class com.veloginmobile.server.ServerApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@52066604, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@613a8ee1, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@6ebf0f36, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@2c5529ab, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@50ecde95, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@2034b64c], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.7.4)
+
+[2023-01-05 00:58:05.663] [INFO ] [Test worker] com.veloginmobile.server.ServerApplicationTests Starting ServerApplicationTests using Java 17.0.4.1 on DESKTOP-RUAVBMR with PID 22364 (started by KJS in C:\Users\KJS\Documents\DV\OpenSource\VelogInMobile_Server)
+[2023-01-05 00:58:05.664] [INFO ] [Test worker] com.veloginmobile.server.ServerApplicationTests No active profile set, falling back to 1 default profile: "default"
+[2023-01-05 00:58:05.672] [INFO ] [background-preinit] org.hibernate.validator.internal.util.Version HV000001: Hibernate Validator 6.2.5.Final
+[2023-01-05 00:58:06.382] [INFO ] [Test worker] org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2023-01-05 00:58:06.469] [INFO ] [Test worker] org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 77 ms. Found 6 JPA repository interfaces.
+[2023-01-05 00:58:07.083] [INFO ] [Test worker] org.hibernate.jpa.internal.util.LogHelper HHH000204: Processing PersistenceUnitInfo [name: default]
+[2023-01-05 00:58:07.148] [INFO ] [Test worker] org.hibernate.Version HHH000412: Hibernate ORM core version 5.6.11.Final
+[2023-01-05 00:58:07.306] [INFO ] [Test worker] org.hibernate.annotations.common.Version HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[2023-01-05 00:58:07.396] [INFO ] [Test worker] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Starting...
+[2023-01-05 00:58:07.624] [INFO ] [Test worker] com.zaxxer.hikari.HikariDataSource HikariPool-1 - Start completed.
+[2023-01-05 00:58:07.639] [INFO ] [Test worker] org.hibernate.dialect.Dialect HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+Hibernate: 
+    
+    alter table notification_receivers 
+       drop 
+       foreign key FKpvipidlkyvdd4thyyhwujet0d
+Hibernate: 
+    
+    alter table subscribe 
+       drop 
+       foreign key FK5u81xnnjtffjdg8m6ar6rfvyy
+Hibernate: 
+    
+    alter table subscribe 
+       drop 
+       foreign key FKm7u9v9kkwif4qq9mnstv2ildj
+Hibernate: 
+    
+    alter table tag 
+       drop 
+       foreign key FKld85w5kr7ky5w4wda3nrdo0p8
+Hibernate: 
+    
+    alter table tag_tags 
+       drop 
+       foreign key FKmtmt3vgd7dxivjhi12bjiw932
+Hibernate: 
+    
+    alter table user_roles 
+       drop 
+       foreign key FK55itppkw3i07do3h7qoclqd4k
+Hibernate: 
+    
+    drop table if exists notification
+Hibernate: 
+    
+    drop table if exists notification_receivers
+Hibernate: 
+    
+    drop table if exists subscribe
+Hibernate: 
+    
+    drop table if exists tag
+Hibernate: 
+    
+    drop table if exists tag_tags
+Hibernate: 
+    
+    drop table if exists target
+Hibernate: 
+    
+    drop table if exists user
+Hibernate: 
+    
+    drop table if exists user_roles
+Hibernate: 
+    
+    create table notification (
+       id bigint not null auto_increment,
+        group_name varchar(255) not null,
+        primary key (id)
+    ) engine=InnoDB
+Hibernate: 
+    
+    create table notification_receivers (
+       notification_id bigint not null,
+        receivers varchar(255)
+    ) engine=InnoDB
+Hibernate: 
+    
+    create table subscribe (
+       id bigint not null auto_increment,
+        target_velog_user_name varchar(255),
+        user_uid varchar(255),
+        primary key (id)
+    ) engine=InnoDB
+Hibernate: 
+    
+    create table tag (
+       id bigint not null auto_increment,
+        user_id bigint,
+        primary key (id)
+    ) engine=InnoDB
+Hibernate: 
+    
+    create table tag_tags (
+       tag_id bigint not null,
+        tags varchar(255)
+    ) engine=InnoDB
+Hibernate: 
+    
+    create table target (
+       id bigint not null auto_increment,
+        velog_user_name varchar(255),
+        primary key (id)
+    ) engine=InnoDB
+Hibernate: 
+    
+    create table user (
+       id bigint not null auto_increment,
+        name varchar(255) not null,
+        password varchar(255) not null,
+        uid varchar(255) not null,
+        primary key (id)
+    ) engine=InnoDB
+Hibernate: 
+    
+    create table user_roles (
+       user_id bigint not null,
+        roles varchar(255)
+    ) engine=InnoDB
+Hibernate: 
+    
+    alter table notification 
+       add constraint UK_hmefuddx9x31sn386s9qv4xcc unique (group_name)
+Hibernate: 
+    
+    alter table target 
+       add constraint UK_bgy9t5icmpqj5t9tqnokhf14m unique (velog_user_name)
+Hibernate: 
+    
+    alter table user 
+       add constraint UK_a7hlm8sj8kmijx6ucp7wfyt31 unique (uid)
+Hibernate: 
+    
+    alter table notification_receivers 
+       add constraint FKpvipidlkyvdd4thyyhwujet0d 
+       foreign key (notification_id) 
+       references notification (id)
+Hibernate: 
+    
+    alter table subscribe 
+       add constraint FK5u81xnnjtffjdg8m6ar6rfvyy 
+       foreign key (target_velog_user_name) 
+       references target (velog_user_name)
+Hibernate: 
+    
+    alter table subscribe 
+       add constraint FKm7u9v9kkwif4qq9mnstv2ildj 
+       foreign key (user_uid) 
+       references user (uid)
+Hibernate: 
+    
+    alter table tag 
+       add constraint FKld85w5kr7ky5w4wda3nrdo0p8 
+       foreign key (user_id) 
+       references user (id)
+Hibernate: 
+    
+    alter table tag_tags 
+       add constraint FKmtmt3vgd7dxivjhi12bjiw932 
+       foreign key (tag_id) 
+       references tag (id)
+Hibernate: 
+    
+    alter table user_roles 
+       add constraint FK55itppkw3i07do3h7qoclqd4k 
+       foreign key (user_id) 
+       references user (id)
+[2023-01-05 00:58:08.774] [INFO ] [Test worker] org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2023-01-05 00:58:08.783] [INFO ] [Test worker] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2023-01-05 00:58:09.179] [INFO ] [Test worker] com.veloginmobile.server.config.security.JwtTokenProvider [init] JwtTokenProvider 내 secretKey 초기화 시작
+[2023-01-05 00:58:09.180] [INFO ] [Test worker] com.veloginmobile.server.config.security.JwtTokenProvider [init] JwtTokenProvider 내 secretKey 초기화 완료
+[2023-01-05 00:58:09.286] [WARN ] [Test worker] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2023-01-05 00:58:09.493] [INFO ] [Test worker] com.veloginmobile.server.service.impl.NotificationServiceImpl Firebase application has been initialized
+[2023-01-05 00:58:10.485] [INFO ] [Test worker] springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+[2023-01-05 00:58:11.534] [WARN ] [Test worker] org.springframework.security.config.annotation.web.builders.WebSecurity You are asking Spring Security to ignore Ant [pattern='/v2/api-docs']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+[2023-01-05 00:58:11.535] [INFO ] [Test worker] org.springframework.security.web.DefaultSecurityFilterChain Will not secure Ant [pattern='/v2/api-docs']
+[2023-01-05 00:58:11.536] [WARN ] [Test worker] org.springframework.security.config.annotation.web.builders.WebSecurity You are asking Spring Security to ignore Ant [pattern='/swagger-resources/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+[2023-01-05 00:58:11.536] [INFO ] [Test worker] org.springframework.security.web.DefaultSecurityFilterChain Will not secure Ant [pattern='/swagger-resources/**']
+[2023-01-05 00:58:11.537] [WARN ] [Test worker] org.springframework.security.config.annotation.web.builders.WebSecurity You are asking Spring Security to ignore Ant [pattern='/swagger-ui.html']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+[2023-01-05 00:58:11.537] [INFO ] [Test worker] org.springframework.security.web.DefaultSecurityFilterChain Will not secure Ant [pattern='/swagger-ui.html']
+[2023-01-05 00:58:11.537] [WARN ] [Test worker] org.springframework.security.config.annotation.web.builders.WebSecurity You are asking Spring Security to ignore Ant [pattern='/webjars/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+[2023-01-05 00:58:11.537] [INFO ] [Test worker] org.springframework.security.web.DefaultSecurityFilterChain Will not secure Ant [pattern='/webjars/**']
+[2023-01-05 00:58:11.537] [WARN ] [Test worker] org.springframework.security.config.annotation.web.builders.WebSecurity You are asking Spring Security to ignore Ant [pattern='/swagger/**']. This is not recommended -- please use permitAll via HttpSecurity#authorizeHttpRequests instead.
+[2023-01-05 00:58:11.537] [INFO ] [Test worker] org.springframework.security.web.DefaultSecurityFilterChain Will not secure Ant [pattern='/swagger/**']
+[2023-01-05 00:58:11.641] [INFO ] [Test worker] org.springframework.security.web.DefaultSecurityFilterChain Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@f7e004d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2d33aa31, org.springframework.security.web.context.SecurityContextPersistenceFilter@2d6a6887, org.springframework.security.web.header.HeaderWriterFilter@e62d757, org.springframework.security.web.authentication.logout.LogoutFilter@30ae6721, com.veloginmobile.server.config.security.JwtAuthenticationFilter@475454ae, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@49aa6081, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7066c00a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6efd83ac, org.springframework.security.web.session.SessionManagementFilter@5f160341, org.springframework.security.web.access.ExceptionTranslationFilter@3c5de17c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@21b96db]
+[2023-01-05 00:58:11.726] [INFO ] [Test worker] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper Context refreshed
+[2023-01-05 00:58:11.740] [INFO ] [Test worker] springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper Found 1 custom documentation plugin(s)
+[2023-01-05 00:58:11.797] [INFO ] [Test worker] springfox.documentation.spring.web.scanners.ApiListingReferenceScanner Scanning for api listing references
+[2023-01-05 00:58:11.949] [INFO ] [Test worker] com.veloginmobile.server.ServerApplicationTests Started ServerApplicationTests in 6.536 seconds (JVM running for 7.526)
+Hibernate: 
+    select
+        target0_.id as id1_5_,
+        target0_.velog_user_name as velog_us2_5_ 
+    from
+        target target0_
+[2023-01-05 00:58:13.213] [INFO ] [Forwarding newSession on session null to remote] org.openqa.selenium.remote.ProtocolHandshake Detected dialect: W3C
+[2023-01-05 00:58:13.262] [INFO ] [Test worker] org.openqa.selenium.devtools.CdpVersionFinder Found exact CDP implementation for version 108
+crawling
+----------------------------
+노션에 글을 작성하면 알아서 반영되는 블로그, morethan log
+누구나 사용할 수 있는 노션기반 오픈소스 블로그 morethan-log
+next.js
+노션
+블로그
+오픈소스
+프로젝트
+6일 전
+·
+21개의 댓글
+·
+146
+crawling
+----------------------------
+
+crawling
+----------------------------
+
+[2023-01-05 00:58:14.420] [WARN ] [AsyncHttpClient-1-4] org.asynchttpclient.netty.handler.WebSocketHandler onError
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426)
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:258)
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132)
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+[2023-01-05 00:58:14.421] [WARN ] [AsyncHttpClient-1-4] org.openqa.selenium.remote.http.WebSocket Connection reset
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426)
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:258)
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132)
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+]]></system-out>
+  <system-err><![CDATA[Starting ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016}) on port 64591
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+]]></system-err>
+</testsuite>
